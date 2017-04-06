@@ -33,16 +33,6 @@ public class AlumnoEJB {
 	
 	private static Logger logger = Logger.getLogger(AlumnoEJB.class.getName());
 	
-	
-	/*
-	 * PRUEBA
-	 */
-	
-	@PermitAll
-	public String prueba(){
-		return "Esto es una prueba EJB";
-	}
-	
 	/*
 	 * Creación de alumno
 	 */
@@ -52,12 +42,11 @@ public class AlumnoEJB {
 			int telefono, String nombre_autorizador, String dni_autorizador, String descuento, String observaciones_alumno) {
 
 		Alumno alumnoCreado = new Alumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono, nombre_autorizador, dni_autorizador, descuento, observaciones_alumno);
-		
+
 		em.getTransaction().begin();
 		em.persist(alumnoCreado);
 		em.flush();
 		em.getTransaction().commit();
-
 		logger.log(Level.INFO, "El alumno " + alumnoCreado.getNombre() + " ha sido creado.");
 		return alumnoCreado;
 	}
@@ -130,7 +119,10 @@ public class AlumnoEJB {
 		toUpdate.setObservaciones_alumno(alumno.getObservaciones_alumno());
 		toUpdate.setListaDeActividades(alumno.getListaDeActividades());
 
+		em.getTransaction().begin();
 		em.merge(toUpdate);
+		em.flush();
+		em.getTransaction().commit();
 		logger.log(Level.INFO, "El alumno ha sido actualizado.");
 	}
 
@@ -144,7 +136,13 @@ public class AlumnoEJB {
 	public void removeAlumno(Alumno alumnoBorrar)
 			throws NullPointerException, IllegalArgumentException {
 		Alumno alumno = em.find(Alumno.class, alumnoBorrar.getId());
-		em.remove(alumno);
-		logger.log(Level.INFO, "El alumno " + alumno.getNombre() + "ha sido eliminado.");
+		
+		em.getTransaction().begin();
+		em.remove(alumnoBorrar);
+		em.flush();
+		em.getTransaction().commit();
+		
+		logger.log(Level.INFO, "El alumno " + alumno.getNombre() + " ha sido eliminado.");
 	}
+
 }
