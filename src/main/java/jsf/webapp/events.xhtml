@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<ui:composition template="template/common/defaultLayout.xhtml">
+	
+	<ui:param name="logged" value="true" />
+	<ui:define name="title">#{userPage.sessionUser.name}</ui:define> <!-- uso el que creó Sousa -->
+	
+	<ui:define name="content">
+		<!-- All the content for the user is going here -->
+		<div id="content" class="paddedContent">
+				<b:container>
+				<b:row id="allEvents">
+					
+					<ui:repeat value="#{eventManagedBean.allEvents}" var="event"
+						varStatus="estado">
+						<b:column class="col-md-2 col-xs-6 padding">
+							<span
+								class="icon-#{event.category} text-center col-md-12 col-xs-12 iconCategory"></span>
+							<h2>
+								<h:outputText value="#{event.title}" />
+							</h2>
+							<p>
+								<h:outputText value="#{event.description}" />
+								<br />
+								<h:outputText value="#{event.eventDate}" />
+								<br />
+								<h:outputText value="#{event.location}" />
+								<br />
+								<br />
+								<h:outputText value="#{msg['eventsParticipants']} " />
+								<h:outputText value="#{event.participants}" />
+								<b:button look="primary" class="singup" value="#{msg['eventsJoin']}" action="#{eventManagedBean.assistEvent(userPage.sessionUser, event)}"/>
+							
+							
+							</p>
+						</b:column>
+					</ui:repeat>
+				</b:row>
+				</b:container>
+		</div>
+		
+		
+	</ui:define>
+	</ui:composition>
+
+</html>

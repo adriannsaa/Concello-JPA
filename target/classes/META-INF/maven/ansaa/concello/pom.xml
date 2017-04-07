@@ -153,12 +153,12 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-	<dependency>
-		<groupId>org.hibernate</groupId>
-		<artifactId>hibernate-core</artifactId>
-		<version>5.2.9.Final</version>
-	</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.9.Final</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -180,6 +180,20 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/javax.faces/jsf-api -->
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.5</version>
+		</dependency>
+
 	</dependencies>
 
 
@@ -197,6 +211,24 @@
 				</configuration>
 				<version>2.3.2</version>
 			</plugin>
+			 <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.1-beta-1</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+                <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
+                <warName>${project.artifactId}_${noVer}</warName>
+                <archive>
+                    <addMavenDescriptor>false</addMavenDescriptor>
+                    <manifest>
+                        <addClasspath>false</addClasspath>
+                    </manifest>
+                    <manifestEntries/>
+                    <manifestFile/>
+                </archive>
+            </configuration>
+        </plugin>
 			<plugin>
 				<groupId>org.bsc.maven</groupId>
 				<artifactId>maven-processor-plugin</artifactId>

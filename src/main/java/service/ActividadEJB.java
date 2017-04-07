@@ -19,7 +19,6 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import domain.Actividad;
-import domain.Alumno;
 import domain.Monitor;
 
 
@@ -61,13 +60,6 @@ public class ActividadEJB {
 	 */
 	@PermitAll
 	@Transactional(Transactional.TxType.SUPPORTS)
-	public List<Actividad> getAllActividades() throws NoResultException {
-		List<Actividad> listActividades = em.createQuery("SELECT a FROM Actividad", Actividad.class).getResultList();
-		return listActividades;
-	}
-	
-	@PermitAll
-	@Transactional(Transactional.TxType.SUPPORTS)
 	public Actividad findActividadById(int id) throws NoResultException {
 		Actividad actividad = em.createQuery("SELECT a FROM Actividad a WHERE a.id=:i", Actividad.class).setParameter("i", id)
 				.getSingleResult();
@@ -87,11 +79,11 @@ public class ActividadEJB {
 	
 	@PermitAll
 	@Transactional(Transactional.TxType.SUPPORTS)
-	public List<Alumno> getAllAlumnos() {
-		List<Alumno> alumnos = new ArrayList<Alumno>();
+	public List<Actividad> getAllActividades() {
+		List<Actividad> actividades = new ArrayList<Actividad>();
 		
-		alumnos.addAll(em.createQuery("Select a FROM Alumno ", Alumno.class).getResultList());
-		return alumnos;
+		actividades.addAll(em.createQuery("Select a FROM Actividad ", Actividad.class).getResultList());
+		return actividades;
 	}
 	
 	/*
