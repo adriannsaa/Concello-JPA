@@ -202,33 +202,31 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.1</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
-					<compilerArguments>
-						<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-					</compilerArguments>
+					<compilerArgument>-proc:none</compilerArgument>
 				</configuration>
-				<version>2.3.2</version>
 			</plugin>
-			 <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>2.1-beta-1</version>
-            <configuration>
-                <failOnMissingWebXml>false</failOnMissingWebXml>
-                <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
-                <warName>${project.artifactId}_${noVer}</warName>
-                <archive>
-                    <addMavenDescriptor>false</addMavenDescriptor>
-                    <manifest>
-                        <addClasspath>false</addClasspath>
-                    </manifest>
-                    <manifestEntries/>
-                    <manifestFile/>
-                </archive>
-            </configuration>
-        </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
+					<warName>${project.artifactId}</warName>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+						<manifest>
+							<addClasspath>false</addClasspath>
+						</manifest>
+						<manifestEntries />
+						<manifestFile />
+					</archive>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.bsc.maven</groupId>
 				<artifactId>maven-processor-plugin</artifactId>

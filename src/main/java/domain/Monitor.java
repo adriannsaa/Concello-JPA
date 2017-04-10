@@ -76,6 +76,7 @@ public class Monitor implements Serializable {
 	@Column(nullable = false)
 	private boolean activo;
 	
+	@Column
 	@Enumerated(EnumType.STRING)
 	private Contrato contrato;
 	

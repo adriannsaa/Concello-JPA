@@ -17,8 +17,8 @@ FLUSH PRIVILEGES;
 --
 
 DROP TABLE IF EXISTS `Alumno`;
-DROP TABLE IF EXISTS `Actividad`;
 DROP TABLE IF EXISTS `Monitor`;
+DROP TABLE IF EXISTS `Actividad`;
 DROP TABLE IF EXISTS `Asistir`;
 
 --
@@ -42,16 +42,6 @@ CREATE TABLE `Alumno` (
   `observaciones_alumno` varchar(255)
 );
 
-CREATE TABLE `Actividad` (
-  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `nombre` varchar(100) NOT NULL UNIQUE,
-  `participantes` int(3),
-  `horario` datetime NOT NULL,
-  `lugar` varchar(50) NOT NULL,
-  `material` varchar(500) NOT NULL,
-  `observaciones_actividad` varchar(255)  
-);
-
 CREATE TABLE `Monitor` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nombre` varchar(100) NOT NULL,
@@ -65,11 +55,24 @@ CREATE TABLE `Monitor` (
   `sueldo` varchar(15) NOT NULL,
   `activo` bool NOT NULL,
   `contrato` enum('Concello','Autonomo','Subcontratado') NOT NULL,
-  `observaciones_monitor` varchar(255),
-  `actividadesImpartidas` int(11) NOT NULL,
-  
-  FOREIGN KEY (actividadesImpartidas) REFERENCES Actividad(id) ON DELETE CASCADE
+  `observaciones_monitor` varchar(255)
+
 );
+
+CREATE TABLE `Actividad` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nombre` varchar(100) NOT NULL UNIQUE,
+  `participantes` int(3),
+  `horario` datetime NOT NULL,
+  `lugar` varchar(50) NOT NULL,
+  `material` varchar(500) NOT NULL,
+  `observaciones_actividad` varchar(255), 
+  `actividad_monitor` int(11) NOT NULL,
+  
+  FOREIGN KEY (actividad_monitor) REFERENCES Monitor(id) ON DELETE CASCADE
+);
+
+
 
 CREATE TABLE `Asistir` (
   `alumno_id` int(11) NOT NULL,

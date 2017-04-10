@@ -60,7 +60,7 @@ public class Actividad implements Serializable {
 	private List<Alumno> listaDeAlumnos;
 
 	@ManyToOne
-	@JoinColumn(name = "actividadesImpartidas")
+	@JoinColumn(name = "actividad_monitor")
 	private Monitor monitor;
 
 	/**
