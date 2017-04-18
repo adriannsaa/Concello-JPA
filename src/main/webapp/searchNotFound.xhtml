@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="templates/defaultLayout.xhtml">
+
+	<ui:define name="content">
+		<div id="content">
+			<b:container>
+				<b:row style="padding:25px">
+					<b:column class="col-xs-12 col-md-8 col-md-offset-2">
+						<h:form role="search">
+							<b:panelGrid colSpans="10,2" size="xs">
+								<b:inputText id="search"
+									placeholder="#{msg['searchFormButtonPlaceholder']}"
+									value="#{searchPageBean.textSearch}"></b:inputText>
+								<h:message for="search" />
+								<b:commandButton type="submit"
+									value="#{msg['searchFormButton']}" class="btn btn-default"
+									action="#{searchPageBean.doSearch()}"></b:commandButton>
+							</b:panelGrid>
+						</h:form>
+					</b:column>
+				</b:row>
+			</b:container>
+
+			<b:container>
+				<b:row style="padding:25px">
+					<b:column class="col-xs-10 col-md-10" style="text-align: center">
+						<br />
+						<h4><h:outputText value="#{msg['searchNotFound']}" /></h4>
+						<br />
+					</b:column>
+				</b:row>
+			</b:container>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

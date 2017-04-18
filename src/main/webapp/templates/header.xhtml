@@ -11,7 +11,7 @@
 			brand-img-style="height:20px;" brandHref="index.xhtml">
 			<h:form rendered="#{view.viewId != '/search.xhtml'}"
 				class="navbar-form navbar-right hidden-xs">
-				<b:inputText  style="margin-top:-20px" id="search" placeholder="#{msg['placeholderSearch']}"
+				<b:inputText  style="margin-top:-20px; padding-top:10px;height: 45px;" id="search" placeholder="#{msg['placeholderSearch']}"
 					value="#{searchPageBean.textSearch}"></b:inputText>
 					<h:message for="search" />
 				<b:commandButton  type="submit" value="#{msg['buttonSearch']}"
@@ -19,36 +19,15 @@
 					action="#{searchPageBean.doSearch()}"
 					style="margin-left: 10px; margin-top: -20px; margin-left: 20px;"></b:commandButton>
 				<h:form>
-					<h:commandButton action="#{languageBean.changeLanguage('')}"
+					<h:commandButton action="#{languageBean.changeLanguage('es')}"
 						value="Español" image="resources/es.png" />
 					<h:outputText value=" " />
 					<h:commandButton action="#{languageBean.changeLanguage('en')}"
 						value="English" image="resources/en.png" />
 				</h:form>	
 			</h:form>
-			<b:navbarLinks rendered="#{not loginBean.logged}" pull="right">
-				<b:navLink value="#{msg['login']}" href="login.xhtml"></b:navLink>
-			</b:navbarLinks>
-			<b:navbarLinks rendered="#{not loginBean.logged}" pull="right">
-				<b:navLink value="#{msg['singUp']}" href="sign-up.xhtml"></b:navLink>
-			</b:navbarLinks>
-			<b:navbarLinks rendered="#{loginBean.logged}" pull="right">
-				<b:navLink value="     " href="#"></b:navLink>
-			</b:navbarLinks>
-			<h:form rendered="#{loginBean.logged}"
-				class="navbar-form navbar-right hidden-xs" style="margin-top:0px; margin-bottom: 0px">
-				<b:navbarLinks pull="right" style="padding: 0px" styleClass="hidden-xs">
-					<b:navCommandLink style="padding-top: 0px; padding-bottom: 0px;" value="#{loginBean.userLoggedConfirmed.name}" href="user.xhtml"/>
-					<b:navCommandLink value="#{msg['logout']}"
-						actionListener="#{loginBean.doLogout()}" />
-				</b:navbarLinks>
-			</h:form>
 		</b:navBar>
 	</div>
 </ui:composition>
 
-<!-- <f:metadata>
-	<f:event type="preRenderView"
-		listener="#{eventManagedBean.inicializate())}"></f:event>
-</f:metadata> -->
 </html>

@@ -193,6 +193,13 @@
 			<artifactId>bootstrap</artifactId>
 			<version>3.3.5</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/net.bootsfaces/bootsfaces -->
+		<dependency>
+		    <groupId>net.bootsfaces</groupId>
+		    <artifactId>bootsfaces</artifactId>
+		    <version>0.9.1</version>
+		</dependency>	
 
 	</dependencies>
 
@@ -209,6 +216,7 @@
 					<compilerArgument>-proc:none</compilerArgument>
 				</configuration>
 			</plugin>
+            
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>

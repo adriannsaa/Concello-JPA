@@ -131,8 +131,14 @@
 }
 
 #footer, #footer a {
-	background: #337CBB;
+	background: #A52A2A;
 	color: #ECF3F9;
+	bottom: 0;
+	position: fixed;
+	height: 10%;
+	text-align: center;
+	padding-top: 1%;
+	width:100%;
 }
 
 .modal-header {
@@ -147,4 +153,24 @@
 #detailModal .modal-body .row {
 	margin-top:10px;
 	margin-bottom:10px;
+}
+
+.iconContent{
+	width: 300px;
+	height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 18%;
+	border-style: solid;
+	border-color: #A52A2A;
+}
+
+.imgAlumnos{
+	background-image:url(alumnos-icon.png);
+}
+.imgActividades{
+	background-image:url(actividades-icon.png);
+}
+.imgMonitores{
+	background-image:url(monitor-icon.png);
 }
