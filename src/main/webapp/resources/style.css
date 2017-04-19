@@ -184,3 +184,9 @@
 	font-size: large;
 	width: 100%;
 }
+
+#addALumnoForm{
+	background-color: #dfe1dd;
+	margin-left: auto;
+	margin-right: auto;
+}

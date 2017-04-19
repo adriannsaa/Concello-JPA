@@ -11,6 +11,8 @@ import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import javax.swing.JOptionPane;
+
 import domain.Actividad;
 import domain.Alumno;
 import service.ActividadEJB;
@@ -96,6 +98,17 @@ public class AlumnosBean implements Serializable {
 		listaDeActividades = new ArrayList<Actividad>();
 	}
 
+	public Alumno createAlumno(){
+		Alumno alumnoCreado = alumnoEjb.createAlumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono, 
+													 nombre_autorizador, dni_autorizador, descuento, observaciones_alumno);
+		
+		if(alumnoCreado!=null)
+			AlumnosBean.infoBox("OK", "");
+		else AlumnosBean.infoBox("Error", "");
+		
+		return alumnoCreado;
+	}
+	
 	/**
 	 * Find details of alumno
 	 * 
@@ -267,5 +280,10 @@ public class AlumnosBean implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+    public static void infoBox(String infoMessage, String titleBar)
+    {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
 
 }

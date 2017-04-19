@@ -15,6 +15,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import javax.transaction.Transactional;
 
 import domain.Alumno;
@@ -22,7 +23,8 @@ import domain.Alumno;
 @PermitAll
 @Stateless
 public class AlumnoEJB {
-
+	
+	@PersistenceUnit
 	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("Concello");
 
 	@PersistenceContext
@@ -45,10 +47,10 @@ public class AlumnoEJB {
 		Alumno alumnoCreado = new Alumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono,
 				nombre_autorizador, dni_autorizador, descuento, observaciones_alumno);
 
-		em.getTransaction().begin();
+		//em.getTransaction().begin();
 		em.persist(alumnoCreado);
 		em.flush();
-		em.getTransaction().commit();
+		//em.getTransaction().commit();
 		logger.log(Level.INFO, "El alumno " + alumnoCreado.getNombre() + " ha sido creado.");
 		return alumnoCreado;
 	}

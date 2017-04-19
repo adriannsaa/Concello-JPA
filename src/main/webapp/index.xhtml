@@ -15,9 +15,9 @@
 				<b:column col-md="4" col-sm="8" col-xs="16">
 					<div class="iconContent">
 					<h:form>
-					<h:commandLink action="#{NavigationBean.goToAlumnos}">
+					<h:link outcome="#{NavigationBean.goToAlumnos()}">
 						<h:graphicImage style="width:100%" value="resources/alumnos-icon.png" />
-					</h:commandLink>
+					</h:link>
 					</h:form>	
 					</div>
 					<h2>#{msg['indexStudents']}</h2>

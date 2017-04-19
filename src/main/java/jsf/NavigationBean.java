@@ -1,9 +1,13 @@
 package jsf;
 
-import javax.faces.bean.ManagedBean;
+import java.io.Serializable;
 
-@ManagedBean(name="NavigationBean")
-public class NavigationBean {
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
+@Named(value = "NavigationBean")
+@SessionScoped
+public class NavigationBean implements Serializable{
 	
 	public String goToAlumnos() {
 	    return "alumnos";
