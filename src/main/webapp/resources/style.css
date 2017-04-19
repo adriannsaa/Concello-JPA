@@ -174,3 +174,13 @@
 .imgMonitores{
 	background-image:url(monitor-icon.png);
 }
+
+.addButton {
+	background-color: #dfe1dd;
+	font-weight: bold;
+	border-radius: 25px;
+	text-align: center;
+	margin-top: -4%;
+	font-size: large;
+	width: 100%;
+}

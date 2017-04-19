@@ -82,7 +82,7 @@ public class MonitorEJB {
 	public List<Monitor> getAllMonitores() {
 		List<Monitor> monitores = new ArrayList<Monitor>();
 		
-		monitores.addAll(em.createQuery("Select m FROM Monitor ", Monitor.class).getResultList());
+		monitores.addAll(em.createQuery("Select m FROM Monitor m", Monitor.class).getResultList());
 		return monitores;
 	}
 	

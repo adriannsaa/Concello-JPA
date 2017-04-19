@@ -82,7 +82,7 @@ public class ActividadEJB {
 	public List<Actividad> getAllActividades() {
 		List<Actividad> actividades = new ArrayList<Actividad>();
 		
-		actividades.addAll(em.createQuery("Select a FROM Actividad ", Actividad.class).getResultList());
+		actividades.addAll(em.createQuery("Select a FROM Actividad a", Actividad.class).getResultList());
 		return actividades;
 	}
 	

@@ -22,26 +22,28 @@ import domain.Alumno;
 @PermitAll
 @Stateless
 public class AlumnoEJB {
-    
+
 	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("Concello");
-	
+
 	@PersistenceContext
 	EntityManager em = factory.createEntityManager();
-	
+
 	@Resource
 	protected SessionContext ctx;
-	
+
 	private static Logger logger = Logger.getLogger(AlumnoEJB.class.getName());
-	
+
 	/*
 	 * Creación de alumno
 	 */
 	@PermitAll
 	@Transactional(Transactional.TxType.SUPPORTS)
-	public Alumno createAlumno(String nombre, String dni, int edad, String email, String direccion, int cp, String localidad, String provincia, 
-			int telefono, String nombre_autorizador, String dni_autorizador, String descuento, String observaciones_alumno) {
+	public Alumno createAlumno(String nombre, String dni, int edad, String email, String direccion, int cp,
+			String localidad, String provincia, int telefono, String nombre_autorizador, String dni_autorizador,
+			String descuento, String observaciones_alumno) {
 
-		Alumno alumnoCreado = new Alumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono, nombre_autorizador, dni_autorizador, descuento, observaciones_alumno);
+		Alumno alumnoCreado = new Alumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono,
+				nombre_autorizador, dni_autorizador, descuento, observaciones_alumno);
 
 		em.getTransaction().begin();
 		em.persist(alumnoCreado);
@@ -50,8 +52,7 @@ public class AlumnoEJB {
 		logger.log(Level.INFO, "El alumno " + alumnoCreado.getNombre() + " ha sido creado.");
 		return alumnoCreado;
 	}
-	
-	
+
 	/*
 	 * Búsqueda de alumnos
 	 */
@@ -62,7 +63,7 @@ public class AlumnoEJB {
 				.getSingleResult();
 		return alumno;
 	}
-	
+
 	@PermitAll
 	@Transactional(Transactional.TxType.SUPPORTS)
 	public Alumno findAlumnoById(int id) throws NoResultException {
@@ -70,38 +71,38 @@ public class AlumnoEJB {
 				.getSingleResult();
 		return alumno;
 	}
-	
+
 	@PermitAll
-	@Transactional(Transactional.TxType.SUPPORTS)	
+	@Transactional(Transactional.TxType.SUPPORTS)
 	public List<Alumno> findAlumnoByNombre(final String text) throws EntityNotFoundException {
-		List<Alumno> listAlumnos = em.createQuery(
-				"Select a FROM Alumno a WHERE a.nombre LIKE :text OR a.nombre_autorizador LIKE :text ",Alumno.class)
+		List<Alumno> listAlumnos = em
+				.createQuery("Select a FROM Alumno a WHERE a.nombre LIKE :text OR a.nombre_autorizador LIKE :text ",
+						Alumno.class)
 				.setParameter("text", "%" + text + "%").getResultList();
 		if (listAlumnos.size() == 0)
 			throw new EntityNotFoundException("No coincide ningún nombre.");
 		return listAlumnos;
 	}
-	
+
 	@PermitAll
 	@Transactional(Transactional.TxType.SUPPORTS)
 	public List<Alumno> getAllAlumnos() {
 		List<Alumno> alumnos = new ArrayList<Alumno>();
-		
-		alumnos.addAll(em.createQuery("Select a FROM Alumno ", Alumno.class).getResultList());
+
+		alumnos.addAll(em.createQuery("Select a FROM Alumno a ", Alumno.class).getResultList());
 		return alumnos;
 	}
-	
+
 	/*
 	 * Modificación de alumnos
 	 */
 	@PermitAll
 	@Transactional(Transactional.TxType.SUPPORTS)
-	public void updateAlumno(final Alumno alumno)
-			throws IllegalArgumentException, NoResultException{
+	public void updateAlumno(final Alumno alumno) throws IllegalArgumentException, NoResultException {
 		if (alumno == null) {
 			throw new IllegalArgumentException("El alumno no existe.");
 		}
-		
+
 		Alumno toUpdate = findAlumnoById(alumno.getId());
 
 		toUpdate.setNombre(alumno.getNombre());
@@ -126,22 +127,20 @@ public class AlumnoEJB {
 		logger.log(Level.INFO, "El alumno ha sido actualizado.");
 	}
 
-	
 	/*
 	 * Eliminar alumnos
 	 */
-	
+
 	@PermitAll
 	@Transactional(Transactional.TxType.SUPPORTS)
-	public void removeAlumno(Alumno alumnoBorrar)
-			throws NullPointerException, IllegalArgumentException {
+	public void removeAlumno(Alumno alumnoBorrar) throws NullPointerException, IllegalArgumentException {
 		Alumno alumno = em.find(Alumno.class, alumnoBorrar.getId());
-		
+
 		em.getTransaction().begin();
 		em.remove(alumnoBorrar);
 		em.flush();
 		em.getTransaction().commit();
-		
+
 		logger.log(Level.INFO, "El alumno " + alumno.getNombre() + " ha sido eliminado.");
 	}
 

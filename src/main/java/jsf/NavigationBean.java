@@ -5,7 +5,11 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="NavigationBean")
 public class NavigationBean {
 	
-	public String goToPrueba() {
-	    return "prueba";
+	public String goToAlumnos() {
+	    return "alumnos";
+	}
+	
+	public String goToAddAlumno() {
+	    return "addAlumno";
 	}
 }
