@@ -9,11 +9,46 @@
 	
 	<ui:define name="content">
 		<div id="content" class="paddedContent">
-
-		   <h:outputLabel >"#{param.id}":</h:outputLabel>
-           <br />
-           <br />
-
+			<div id="homeIcon">		
+				<h:form>
+					<h:link outcome="#{NavigationBean.goToHome()}">
+						<h:graphicImage style="width:100%" value="resources/homeicon.png" />
+					</h:link>
+				</h:form>
+			</div>
+			<h2>
+				<h:outputText value="#{alumnosBean.nombre}" />
+			</h2>
+			<p>
+				<h:outputText value="#{alumnosBean.dni}" />
+				<br />
+				<h:outputText value="#{alumnosBean.edad}" />
+				<br />
+				<h:outputText value="#{alumnosBean.email}" />
+				<br />
+				<br />
+				<h:outputText value="#{alumnosBean.direccion}" />
+				<br />
+				<h:outputText value="#{alumnosBean.cp}" />
+				<br />
+				<h:outputText value="#{alumnosBean.localidad}" />
+				<br />
+				<br />	
+				<h:outputText value="#{alumnosBean.provincia}" />
+				<br />
+				<h:outputText value="#{alumnosBean.telefono}" />
+				<br />
+				<h:outputText value="#{alumnosBean.nombre_autorizador}" />
+				<br />
+				<br />	
+				<h:outputText value="#{alumnosBean.dni_autorizador}" />
+				<br />
+				<h:outputText value="#{alumnosBean.descuento}" />
+				<br />
+				<h:outputText value="#{alumnosBean.observaciones_alumno}" />
+				<br />
+				<br />	
+			</p>
 		</div>
 				
 	</ui:define>

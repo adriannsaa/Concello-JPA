@@ -79,6 +79,8 @@ public class AlumnosBean implements Serializable {
 
 	private List<Actividad> listaDeActividades;
 	
+	private int detailedAlumnoId;
+	
 	@PostConstruct
 	public void init() {
 
@@ -96,6 +98,7 @@ public class AlumnosBean implements Serializable {
 		descuento = "";
 		observaciones_alumno = "";
 		listaDeActividades = new ArrayList<Actividad>();
+		detailedAlumnoId=0;
 	}
 
 	public String createAlumno(){
@@ -105,6 +108,7 @@ public class AlumnosBean implements Serializable {
 //		if(alumnoCreado!=null)
 //			AlumnosBean.infoBox("OK", "");
 //		else AlumnosBean.infoBox("Error", "");
+		init();
 		return "alumnos";
 	}
 	
@@ -282,6 +286,15 @@ public class AlumnosBean implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public int getDetailedAlumnoId() {
+		return detailedAlumnoId;
+	}
+
+	public void setDetailedAlumnoId(int detailedAlumnoId) {
+		this.detailedAlumnoId = detailedAlumnoId;
+	}
+	
 	
     public static void infoBox(String infoMessage, String titleBar)
     {

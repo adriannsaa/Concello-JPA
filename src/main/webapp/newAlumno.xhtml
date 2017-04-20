@@ -11,6 +11,13 @@
 	<ui:define name="content">
 
 		<div id="content">
+			<div id="homeIcon">		
+				<h:form>
+					<h:link outcome="#{NavigationBean.goToHome()}">
+						<h:graphicImage style="width:100%" value="resources/homeicon.png" />
+					</h:link>
+				</h:form>
+			</div>
 			<div id="addAlumnoForm">
 				<h:form>				
 			        <div id="addAlumnoFormTitulo"><h3>#{msg['newStudent']}</h3></div>
