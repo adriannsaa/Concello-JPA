@@ -40,7 +40,6 @@ public class Alumno implements Serializable {
 
 	@Column(length = 2,nullable = false)
 	@NotNull(message="Introduzca una edad")
-	@Size(min=1, max = 2)
 	private int edad;
 
 	@Column(length = 50, nullable = false)
@@ -55,7 +54,6 @@ public class Alumno implements Serializable {
 	
 	@Column(length = 5,nullable = false)
 	@NotNull(message="Introduzca un código postal")
-	@Size(min=5, max = 5)
 	private int cp;
 	
 	@Column(length = 50,nullable = false)
@@ -70,7 +68,6 @@ public class Alumno implements Serializable {
 	
 	@Column(length = 9,nullable = false)
 	@NotNull(message="Introduzca un teléfono")
-	@Size(min=9, max = 9)
 	private int telefono;
 	
 	@Column(length = 100,nullable = true)

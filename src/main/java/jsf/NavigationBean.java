@@ -13,7 +13,11 @@ public class NavigationBean implements Serializable{
 	    return "alumnos";
 	}
 	
-	public String goToAddAlumno() {
-	    return "addAlumno";
+	public String goToNewAlumno() {
+	    return "newAlumno";
+	}
+	
+	public String goToHome() {
+	    return "index";
 	}
 }

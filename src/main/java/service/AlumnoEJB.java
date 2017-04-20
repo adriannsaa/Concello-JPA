@@ -91,7 +91,7 @@ public class AlumnoEJB {
 	public List<Alumno> getAllAlumnos() {
 		List<Alumno> alumnos = new ArrayList<Alumno>();
 
-		alumnos.addAll(em.createQuery("Select a FROM Alumno a ", Alumno.class).getResultList());
+		alumnos.addAll(em.createQuery("Select a FROM Alumno a ORDER BY a.id DESC", Alumno.class).getResultList());
 		return alumnos;
 	}
 

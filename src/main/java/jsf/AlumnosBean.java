@@ -98,16 +98,16 @@ public class AlumnosBean implements Serializable {
 		listaDeActividades = new ArrayList<Actividad>();
 	}
 
-	public Alumno createAlumno(){
+	public String createAlumno(){
 		Alumno alumnoCreado = alumnoEjb.createAlumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono, 
 													 nombre_autorizador, dni_autorizador, descuento, observaciones_alumno);
 		
-		if(alumnoCreado!=null)
-			AlumnosBean.infoBox("OK", "");
-		else AlumnosBean.infoBox("Error", "");
-		
-		return alumnoCreado;
+//		if(alumnoCreado!=null)
+//			AlumnosBean.infoBox("OK", "");
+//		else AlumnosBean.infoBox("Error", "");
+		return "alumnos";
 	}
+	
 	
 	/**
 	 * Find details of alumno
@@ -115,7 +115,7 @@ public class AlumnosBean implements Serializable {
 	 * @param id
 	 *            id of the alumno
 	 */
-	public void getDetailsAlumno(int id) {
+	public String getDetailsAlumno(int id) {
 		Alumno alumno = alumnoEjb.findAlumnoById(id);
 
 		this.id = alumno.getId();
@@ -133,6 +133,8 @@ public class AlumnosBean implements Serializable {
 		this.descuento = alumno.getDescuento();
 		this.observaciones_alumno = alumno.getObservaciones_alumno();
 		this.listaDeActividades = alumno.getListaDeActividades();
+		
+		return "alumnoDetails";
 	}
 	
 	public List<Alumno> getAllAlumnos(){

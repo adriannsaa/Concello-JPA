@@ -14,26 +14,37 @@
 						<h:form>
 							<b:commandButton styleClass="addButton" type="submit"
 								value="#{msg['alumnosAdd']}"
-								action="#{NavigationBean.goToAddAlumno()}" />
+								action="#{NavigationBean.goToNewAlumno()}" />
 						</h:form>
 					</b:row>
-					<b:row>		
+					<b:row>	
+	    				<div id="homeIcon">		
+	    					<h:form>
+								<h:link outcome="#{NavigationBean.goToHome()}">
+									<h:graphicImage style="width:100%" value="resources/homeicon.png" />
+								</h:link>
+							</h:form>
+						</div>
 						<ui:repeat value="#{alumnosBean.getAllAlumnos()}" var="alumno" varStatus="estado">
-							<b:column class="col-md-2 col-xs-6 padding">
-								<h2>
-									<h:outputText value="#{alumno.nombre}" />
-								</h2>
-								<p>
-									<h:outputText value="#{alumno.dni}" />
-									<br />
-									<h:outputText value="#{alumno.email}" />
-									<br />
-									<h:outputText value="#{alumno.telefono}" />
-									<br />
-									<br />
-								
-								</p>
-							</b:column>
+						<div class="viewAlumnos">							
+							<h:form>
+								<h:link outcome="#{alumnosBean.getDetailsAlumno(alumno.id)}">
+									<f:param name="alumnoId" value="#{alumno.id}"/>
+									<h2>
+										<h:outputText value="#{alumno.nombre}" />
+									</h2>
+									<p>
+										<h:outputText value="#{alumno.dni}" />
+										<br />
+										<h:outputText value="#{alumno.email}" />
+										<br />
+										<h:outputText value="#{alumno.telefono}" />
+										<br />
+										<br />				
+									</p>
+								</h:link>
+							</h:form>
+						</div>	
 						</ui:repeat>
 					</b:row>
 				</b:container>

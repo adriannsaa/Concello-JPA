@@ -88,6 +88,8 @@ CREATE TABLE `Asistir` (
 -- Alumnos
 
 INSERT INTO `Alumno`(nombre,dni,edad,email,direccion,cp,localidad,provincia,telefono,nombre_autorizador,dni_autorizador,descuento,observaciones_alumno) 
+VALUES ('Roberto', '33551482N', 28, 'asdf@gmail.com', 'BernardoCacha', 32004, 'Ourense', 'Ourense', 646167768,'Ramon' ,'33551123P' ,'30%' , 'Prueba1');
+INSERT INTO `Alumno`(nombre,dni,edad,email,direccion,cp,localidad,provincia,telefono,nombre_autorizador,dni_autorizador,descuento,observaciones_alumno) 
 VALUES ('Adrian', '33551492N', 28, 'asdf@gmail.com', 'BernardoCacha', 32004, 'Ourense', 'Ourense', 646867768,'Ramon' ,'33551498P' ,'30%' , 'Prueba1');
 INSERT INTO `Alumno`(nombre,dni,edad,email,direccion,cp,localidad,provincia,telefono,nombre_autorizador,dni_autorizador,descuento,observaciones_alumno) 
 VALUES ('Pablo', '13451492P', 21, 'afre4f@gmail.com', 'JoseteCalle', 32001, 'Lugo', 'Lugo', 555467768,'Manuel' ,'33551498X' ,'10%' , 'Prueba2');

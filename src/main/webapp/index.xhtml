@@ -14,23 +14,31 @@
 			<b:row style="text-align:center; margin-left:auto; margin-right:auto">
 				<b:column col-md="4" col-sm="8" col-xs="16">
 					<div class="iconContent">
-					<h:form>
-					<h:link outcome="#{NavigationBean.goToAlumnos()}">
-						<h:graphicImage style="width:100%" value="resources/alumnos-icon.png" />
-					</h:link>
-					</h:form>	
+						<h:form>
+							<h:link outcome="#{NavigationBean.goToAlumnos()}">
+								<h:graphicImage style="width:100%" value="resources/alumnos-icon.png" />
+							</h:link>
+						</h:form>	
 					</div>
 					<h2>#{msg['indexStudents']}</h2>
 				</b:column>
 				<b:column col-md="4" col-sm="8" col-xs="16">
 					<div class="iconContent">
-						<h:graphicImage style="width:100%" value="resources/actividades-icon.png" />
+						<h:form>
+							<h:link outcome="#{NavigationBean.goToAlumnos()}">
+								<h:graphicImage style="width:100%" value="resources/actividades-icon.png" />
+							</h:link>
+						</h:form>	
 					</div>
 					<h2>#{msg['indexActivities']}</h2>
 				</b:column>
 				<b:column col-md="4" col-sm="8" col-xs="16">
 					<div class="iconContent">
-						<h:graphicImage style="width:100%" value="resources/monitor-icon.png" />
+						<h:form>
+							<h:link outcome="#{NavigationBean.goToAlumnos()}">
+								<h:graphicImage style="width:100%" value="resources/monitor-icon.png" />
+							</h:link>
+						</h:form>	
 					</div>
 					<h2>#{msg['indexInstructor']}</h2>
 				</b:column>
