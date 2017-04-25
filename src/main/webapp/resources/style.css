@@ -191,7 +191,7 @@
 	margin-right: auto;
 	width:20%;
 	padding-left:1%;
-	padding-bottom: 1%;
+	padding-bottom: 5%;
 }
 
 #addAlumnoFormTitulo{
@@ -239,3 +239,19 @@
 	margin-bottom: 6%;
 }
 
+.createButtonStudent {
+	background-color: #5da86b;
+	text-align: center;
+	margin-top: 15%;
+	font-size: medium;
+	margin-left: 65%;
+	margin-bottom: 6%;
+}
+.deleteButtonStudent {
+	background-color: red;
+	text-align: center;
+	margin-top: 15%;
+	font-size: medium;
+	margin-left: 24%;
+	margin-bottom: 7%;
+}

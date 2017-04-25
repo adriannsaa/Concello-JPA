@@ -25,7 +25,7 @@ import domain.Alumno;
 public class AlumnoEJB {
 	
 	@PersistenceUnit
-	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("Concello");
+	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("MySqlDS");
 
 	@PersistenceContext
 	EntityManager em = factory.createEntityManager();
@@ -47,10 +47,8 @@ public class AlumnoEJB {
 		Alumno alumnoCreado = new Alumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono,
 				nombre_autorizador, dni_autorizador, descuento, observaciones_alumno);
 
-		//em.getTransaction().begin();
 		em.persist(alumnoCreado);
 		em.flush();
-		//em.getTransaction().commit();
 		logger.log(Level.INFO, "El alumno " + alumnoCreado.getNombre() + " ha sido creado.");
 		return alumnoCreado;
 	}
@@ -122,10 +120,9 @@ public class AlumnoEJB {
 		toUpdate.setObservaciones_alumno(alumno.getObservaciones_alumno());
 		toUpdate.setListaDeActividades(alumno.getListaDeActividades());
 
-		em.getTransaction().begin();
 		em.merge(toUpdate);
 		em.flush();
-		em.getTransaction().commit();
+		
 		logger.log(Level.INFO, "El alumno ha sido actualizado.");
 	}
 
@@ -138,10 +135,8 @@ public class AlumnoEJB {
 	public void removeAlumno(Alumno alumnoBorrar) throws NullPointerException, IllegalArgumentException {
 		Alumno alumno = em.find(Alumno.class, alumnoBorrar.getId());
 
-		em.getTransaction().begin();
-		em.remove(alumnoBorrar);
+		em.remove(em.merge(alumnoBorrar)); //Al tenerlo en el mismo form que el edit hace falta el merge.
 		em.flush();
-		em.getTransaction().commit();
 
 		logger.log(Level.INFO, "El alumno " + alumno.getNombre() + " ha sido eliminado.");
 	}

@@ -25,7 +25,7 @@ import domain.Monitor;
 @Stateless
 public class MonitorEJB {
     
-	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("Concello");
+	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("MySqlDS");
 	
 	@PersistenceContext
 	EntityManager em = factory.createEntityManager();
@@ -45,10 +45,9 @@ public class MonitorEJB {
 		
 		Monitor monitorCreado = new Monitor(nombre, dni, email, direccion, cp, localidad, provincia,telefono,sueldo,activo,contrato,observaciones_monitor);
 
-		em.getTransaction().begin();
 		em.persist(monitorCreado);
 		em.flush();
-		em.getTransaction().commit();
+
 		logger.log(Level.INFO, "La actividad " + monitorCreado.getNombre() + " ha sido creada.");
 		return monitorCreado;
 	}
@@ -112,10 +111,9 @@ public class MonitorEJB {
 		toUpdate.setObservaciones_monitor(monitor.getObservaciones_monitor());
 		toUpdate.setActividadesImpartidas(monitor.getActividadesImpartidas());
 
-		em.getTransaction().begin();
 		em.merge(toUpdate);
 		em.flush();
-		em.getTransaction().commit();
+
 		logger.log(Level.INFO, "El monitor ha sido actualizada.");
 	}
 
@@ -130,10 +128,8 @@ public class MonitorEJB {
 			throws NullPointerException, IllegalArgumentException {
 		Monitor monitor = em.find(Monitor.class, monitorBorrar.getId());
 		
-		em.getTransaction().begin();
 		em.remove(monitor);
 		em.flush();
-		em.getTransaction().commit();
 		
 		logger.log(Level.INFO, "El monitor " + monitor.getNombre() + " ha sido eliminado.");
 	}

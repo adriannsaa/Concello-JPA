@@ -43,8 +43,7 @@ public class Alumno implements Serializable {
 	private int edad;
 
 	@Column(length = 50, nullable = false)
-	@NotNull(message="Introduzca un Email")
-	@Size(min=6, max = 50)
+
 	private String email;
 	
 	@Column(length = 100,nullable = false)
@@ -71,19 +70,19 @@ public class Alumno implements Serializable {
 	private int telefono;
 	
 	@Column(length = 100,nullable = true)
-	@Size(min=5, max = 100)
+
 	private String nombre_autorizador;
 	
 	@Column(length = 9,nullable = true)
-	@Size(min=9, max = 9)
+
 	private String dni_autorizador;
 	
 	@Column(length = 6,nullable = true)
-	@Size(min=0, max = 6)
+
 	private String descuento;
 	
 	@Column(length = 255,nullable = true)
-	@Size(min=0, max = 250)
+
 	private String observaciones_alumno;
 
 	@ManyToMany

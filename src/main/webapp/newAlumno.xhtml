@@ -21,76 +21,79 @@
 			<div id="addAlumnoForm">
 				<h:form>				
 			        <div id="addAlumnoFormTitulo"><h3>#{msg['newStudent']}</h3></div>
+			        <h:messages style="color:red;position:fixed;right:24%"></h:messages>
 			        <h:panelGrid id="panel" columns="3">
 			        
-			            <h:outputLabel for="nombre">#{msg['addStudentName']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.nombre}"></h:inputText>
+			            <h:outputLabel for="nombre">*#{msg['addStudentName']}:</h:outputLabel>
+			            <h:inputText id ="nombre" value="#{alumnosBean.nombre}" required="true" requiredMessage="#{msg['validatorName']}">		           		
+			            </h:inputText>
 			            <br />
 			            <br />
 			 
-			            <h:outputLabel for="dni">#{msg['addStudentDni']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.dni}"></h:inputText>
+			            <h:outputLabel for="dni">*#{msg['addStudentDni']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosBean.dni}" required="true" requiredMessage="#{msg['validatorDni']}"></h:inputText>
 			            <br />
 			            <br />
 			 
-			            <h:outputLabel for="edad">#{msg['addStudentAge']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.edad}"></h:inputText>
+			            <h:outputLabel for="edad">*#{msg['addStudentAge']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosBean.edad}" required="true" requiredMessage="#{msg['validatorAge']}"></h:inputText>
 			            <br />
 			            <br />
 			 
 			            <h:outputLabel for="email">#{msg['addStudentEmail']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.email}"></h:inputText>
+			            <h:inputText value="#{alumnosBean.email}" required="false" requiredMessage="#{msg['validatorEmail']}"></h:inputText>
 			            <br />
 			            <br />
 			 
-			            <h:outputLabel for="direccion">#{msg['addStudentAddress']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.direccion}"></h:inputText>
+			            <h:outputLabel for="direccion">*#{msg['addStudentAddress']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosBean.direccion}" required="true" requiredMessage="#{msg['validatorAddress']}"></h:inputText>
 			            <br />
 			            <br />
 			            
-				        <h:outputLabel for="cp">#{msg['addStudentCp']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.cp}"></h:inputText>
+				        <h:outputLabel for="cp">*#{msg['addStudentCp']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosBean.cp}" required="true" requiredMessage="#{msg['validatorCp']}"></h:inputText>
 			            <br />
 			            <br />
 			 
-			            <h:outputLabel for="localidad">#{msg['addStudentCity']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.localidad}"></h:inputText>
+			            <h:outputLabel for="localidad">*#{msg['addStudentCity']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosBean.localidad}" required="true" requiredMessage="#{msg['validatorLocation']}"></h:inputText>
 			            <br />
 			            <br />
 			 
-			            <h:outputLabel for="provincia">#{msg['addStudentState']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.provincia}"></h:inputText>
+			            <h:outputLabel for="provincia">*#{msg['addStudentState']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosBean.provincia}" required="true" requiredMessage="#{msg['validatorState']}"></h:inputText>
 			            <br />
 			            <br />
 			 
-			            <h:outputLabel for="tlf">#{msg['addStudentPhone']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.telefono}"></h:inputText>
+			            <h:outputLabel for="tlf">*#{msg['addStudentPhone']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosBean.telefono}" required="true" requiredMessage="#{msg['validatorTlf']}"></h:inputText>
 			            <br />
 			            <br />
 			 
 			            <h:outputLabel for="nAutorizador">#{msg['addStudentAuthName']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.nombre_autorizador}"></h:inputText>
+			            <h:inputText value="#{alumnosBean.nombre_autorizador}" required="false" requiredMessage="#{msg['validatorNAuth']}"></h:inputText>
 			            <br />
 			            <br />
 			            
 	 		            <h:outputLabel for="dniAutorizador">#{msg['addStudentAuthDni']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.dni_autorizador}"></h:inputText>
+			            <h:inputText value="#{alumnosBean.dni_autorizador}" required="false" requiredMessage="#{msg['validatorDniAuth']}"></h:inputText>
 			            <br />
 			            <br />
 			            
 			            <h:outputLabel for="descuento">#{msg['addStudentDiscount']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.descuento}"></h:inputText>
+			            <h:inputText value="#{alumnosBean.descuento}" required="false" requiredMessage="#{msg['validatorDisc']}"></h:inputText>
 			            <br />
 			            <br />
 			            
 			            <h:outputLabel for="observaciones">#{msg['addStudentObser']}:</h:outputLabel>
-			            <h:inputText value="#{alumnosBean.observaciones_alumno}"></h:inputText>
+			            <h:inputTextarea cols="20" rows="5" value="#{alumnosBean.observaciones_alumno}" required="false" requiredMessage="#{msg['validatorStudentObvs']}"></h:inputTextarea>
 			            <br />
 			            <br />
 			            
 			            <h:commandButton styleClass="createButtonSubmit" value="#{msg['addButtonSubmit']}" type="submit" action="#{alumnosBean.createAlumno()}">
-			            </h:commandButton>
+			            </h:commandButton>		      		       		
 		       		</h:panelGrid>
+
    			 	</h:form>
    			 </div>
 		</div>

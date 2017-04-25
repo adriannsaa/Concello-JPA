@@ -8,7 +8,7 @@
 	<ui:composition template="templates/defaultLayout.xhtml">
 	
 	<ui:define name="content">
-		<div id="content" class="paddedContent">
+		<div id="content">
 			<div id="homeIcon">		
 				<h:form>
 					<h:link outcome="#{NavigationBean.goToHome()}">
@@ -16,39 +16,85 @@
 					</h:link>
 				</h:form>
 			</div>
-			<h2>
-				<h:outputText value="#{alumnosBean.nombre}" />
-			</h2>
-			<p>
-				<h:outputText value="#{alumnosBean.dni}" />
-				<br />
-				<h:outputText value="#{alumnosBean.edad}" />
-				<br />
-				<h:outputText value="#{alumnosBean.email}" />
-				<br />
-				<br />
-				<h:outputText value="#{alumnosBean.direccion}" />
-				<br />
-				<h:outputText value="#{alumnosBean.cp}" />
-				<br />
-				<h:outputText value="#{alumnosBean.localidad}" />
-				<br />
-				<br />	
-				<h:outputText value="#{alumnosBean.provincia}" />
-				<br />
-				<h:outputText value="#{alumnosBean.telefono}" />
-				<br />
-				<h:outputText value="#{alumnosBean.nombre_autorizador}" />
-				<br />
-				<br />	
-				<h:outputText value="#{alumnosBean.dni_autorizador}" />
-				<br />
-				<h:outputText value="#{alumnosBean.descuento}" />
-				<br />
-				<h:outputText value="#{alumnosBean.observaciones_alumno}" />
-				<br />
-				<br />	
-			</p>
+			
+			<div id="addAlumnoForm">
+				<h:form>	
+					 <div id="addAlumnoFormTitulo"><h3>#{msg['modifyStudent']}</h3></div>			
+			        <h:panelGrid id="panel" columns="3">
+			        
+			            <h:outputLabel for="nombre">*#{msg['addStudentName']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.nombre}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="dni">*#{msg['addStudentDni']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.dni}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="edad">*#{msg['addStudentAge']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.edad}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="email">#{msg['addStudentEmail']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.email}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="direccion">*#{msg['addStudentAddress']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.direccion}"></h:inputText>
+			            <br />
+			            <br />
+			            
+				        <h:outputLabel for="cp">*#{msg['addStudentCp']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.cp}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="localidad">*#{msg['addStudentCity']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.localidad}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="provincia">*#{msg['addStudentState']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.provincia}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="tlf">*#{msg['addStudentPhone']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.telefono}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="nAutorizador">#{msg['addStudentAuthName']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.nombre_autorizador}"></h:inputText>
+			            <br />
+			            <br />
+			            
+	 		            <h:outputLabel for="dniAutorizador">#{msg['addStudentAuthDni']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.dni_autorizador}"></h:inputText>
+			            <br />
+			            <br />
+			            
+			            <h:outputLabel for="descuento">#{msg['addStudentDiscount']}:</h:outputLabel>
+			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.descuento}"></h:inputText>
+			            <br />
+			            <br />
+			            
+			            <h:outputLabel for="observaciones">#{msg['addStudentObser']}:</h:outputLabel>
+			            <h:inputTextarea cols="20" rows="5" value="#{alumnosDetailsBean.alumnoDetails.observaciones_alumno}"></h:inputTextarea>
+			            <br />
+			            <br />
+			            
+			            <h:commandButton styleClass="createButtonStudent" value="#{msg['addButtonSave']}" type="submit" action="#{alumnosDetailsBean.saveDetailsAlumno(alumnosDetailsBean.alumnoDetails.id)}">
+			            </h:commandButton>
+  			            <h:commandButton styleClass="deleteButtonStudent" value="#{msg['deteleButtonStudent']}" type="submit" action="#{alumnosDetailsBean.deleteAlumno(alumnosDetailsBean.alumnoDetails.id)}">
+			            </h:commandButton>
+		       		</h:panelGrid>
+   			 	</h:form>
+   			 </div>
+   			 					
 		</div>
 				
 	</ui:define>

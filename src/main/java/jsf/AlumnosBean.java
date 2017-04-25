@@ -43,8 +43,7 @@ public class AlumnosBean implements Serializable {
 	@NotNull(message = "Introduzca una edad")
 	private int edad;
 
-	@NotNull(message = "Introduzca un Email")
-	@Size(min = 6, max = 50)
+	
 	private String email;
 
 	@NotNull(message = "Introduzca una durección")
@@ -65,16 +64,16 @@ public class AlumnosBean implements Serializable {
 	@NotNull(message = "Introduzca un teléfono")
 	private int telefono;
 
-	@Size(min = 5, max = 100)
+
 	private String nombre_autorizador;
 
-	@Size(min = 9, max = 9)
+
 	private String dni_autorizador;
 
-	@Size(min = 0, max = 6)
+
 	private String descuento;
 
-	@Size(min = 0, max = 250)
+
 	private String observaciones_alumno;
 
 	private List<Actividad> listaDeActividades;

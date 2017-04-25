@@ -28,7 +28,7 @@
 						<ui:repeat value="#{alumnosBean.getAllAlumnos()}" var="alumno" varStatus="estado">
 						<div class="viewAlumnos">							
 							<h:form>
-								<h:link outcome="#{alumnosBean.getDetailsAlumno(alumno.id)}">
+								<h:commandLink action="#{alumnosDetailsBean.getDetailsAlumno(alumno.id)}">
 									<h2>
 										<h:outputText value="#{alumno.nombre}" />
 									</h2>
@@ -41,7 +41,7 @@
 										<br />
 										<br />				
 									</p>
-								</h:link>
+								</h:commandLink>
 							</h:form>
 						</div>	
 						</ui:repeat>
