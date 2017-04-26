@@ -2,30 +2,23 @@ package jsf;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import javax.swing.JOptionPane;
 
 import domain.Actividad;
 import domain.Alumno;
 import domain.Monitor;
 import service.ActividadEJB;
-import service.AlumnoEJB;
+import service.MonitorEJB;
 
 @Named(value = "actividadesBean")
 @SessionScoped
@@ -35,6 +28,8 @@ public class ActividadesBean implements Serializable {
 
 	@Inject
 	ActividadEJB actividadEjb;
+	@Inject
+	MonitorEJB monitorEjb;
 	
 	@Id
 	@NotNull
@@ -65,7 +60,7 @@ public class ActividadesBean implements Serializable {
 	
 	private List<Alumno> listaDeAlumnos;
 
-	private Monitor monitor;
+	private Monitor monitor;	
 	
 	@PostConstruct
 	public void init() {
@@ -75,8 +70,9 @@ public class ActividadesBean implements Serializable {
 		lugar="";
 		material="";
 		observaciones_actividad="";
-		listaDeAlumnos = new ArrayList<Alumno>();;
+		listaDeAlumnos = new ArrayList<Alumno>();
 		monitor = new Monitor();
+		
 	}
 
 	public String createActividad(){
@@ -112,9 +108,10 @@ public class ActividadesBean implements Serializable {
 	public List<Actividad> getAllActividades(){
 		List<Actividad> allActividades = new ArrayList<Actividad>();
 		allActividades = actividadEjb.getAllActividades();
+
 		return allActividades;
 	}
-
+	
 	public ActividadEJB getActividadEjb() {
 		return actividadEjb;
 	}
@@ -194,11 +191,19 @@ public class ActividadesBean implements Serializable {
 	public void setMonitor(Monitor monitor) {
 		this.monitor = monitor;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	
+	public MonitorEJB getMonitorEjb() {
+		return monitorEjb;
 	}
 
+	public void setMonitorEjb(MonitorEJB monitorEjb) {
+		this.monitorEjb = monitorEjb;
+	}
+
+
 	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}	
 
 }

@@ -25,21 +25,23 @@
 								</h:link>
 							</h:form>
 						</div>
-						<ui:repeat value="#{alumnosBean.getAllAlumnos()}" var="alumno" varStatus="estado">
+						<ui:repeat value="#{actividadesBean.getAllActividades()}" var="actividad" varStatus="estado">
 						<div class="viewAlumnos">							
 							<h:form>
-								<h:commandLink action="#{alumnosDetailsBean.getDetailsAlumno(alumno.id)}">
+								<h:commandLink action="#{actividadesDetailsBean.getDetailsActividad(actividad.id)}">
 									<h2>
-										<h:outputText value="#{alumno.nombre}" />
+										<h:outputText value="#{actividad.nombre}" />
 									</h2>
 									<p>
-										<h:outputText value="#{alumno.dni}" />
+										<h:outputText value="#{actividad.participantes}" />
 										<br />
-										<h:outputText value="#{alumno.email}" />
+										<h:outputText value="#{actividad.monitor.nombre}" />
 										<br />
-										<h:outputText value="#{alumno.telefono}" />
+										<h:outputText value="#{actividad.horario}" />
 										<br />
-										<br />				
+										<h:outputText value="#{actividad.lugar}" />
+										<br />
+										<br />			
 									</p>
 								</h:commandLink>
 							</h:form>

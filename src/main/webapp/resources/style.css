@@ -90,6 +90,9 @@
 .listEvents {
 	margin-top: 20px;
 	margin-bottom: 20px;
+	text-align: left;
+	left: -25%;
+	position: relative;
 }
 
 #lettab {

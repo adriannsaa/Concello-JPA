@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -54,13 +55,13 @@ public class Actividad implements Serializable {
 	@Size(min=0, max = 255)
 	private String observaciones_actividad;
 	
-	@ManyToMany(mappedBy="listaDeActividades")
+	@ManyToMany(mappedBy="listaDeActividades", cascade = CascadeType.ALL)
 	private List<Alumno> listaDeAlumnos;
 
-	@ManyToOne
-	@JoinColumn(name = "actividad_monitor")
-	private Monitor monitor;
-
+	@ManyToOne (cascade = CascadeType.ALL)
+	@JoinColumn(name = "monitor_actividad")
+	private Monitor monitor = new Monitor();
+	
 	/**
 	 * Constructor a new instance of {@link Actividad} This constructor is empty
 	 * because is required
@@ -213,7 +214,8 @@ public class Actividad implements Serializable {
 				+ "Observariones_Actividad " + observaciones_actividad + " \n"
 				+ "Lista de alumnos: " + listaDeAlumnos;
 	}
-	
+
+
 }
 
 

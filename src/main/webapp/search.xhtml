@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
-<ui:composition template="template/common/defaultLayout.xhtml">
+<ui:composition template="templates/defaultLayout.xhtml">
 	<ui:define name="content">
 		<div id="content">
 			<b:container>
@@ -27,58 +27,35 @@
 			</b:container>
 
 			<b:container>
+				<div id="homeIcon">		
+	  					<h:form>
+						<h:link outcome="#{NavigationBean.goToHome()}">
+							<h:graphicImage style="width:100%" value="resources/homeicon.png" />
+						</h:link>
+					</h:form>
+				</div>
 				<ui:repeat value="#{searchPageBean.matchedAlumnoList}" var="alumno"
 					varStatus="estado">
-					<b:row class="listEvents">
-						<b:column
-							class="col-md-2 col-md-offset-3 col-xs-4 col-xs-offset-1 text-center">
-							<span></span>
-						</b:column>
-						<b:column class="col-md-4 col-xs-6">
-							<h2>
-								<h:outputText value="#{alumno.nombre}" />
-							</h2>
-							<p>
-								<h:outputText value="#{alumno.dni}" />
-								<br />
-								<h:outputText value="#{alumno.email}" />
-								<br />
-								<h:outputText value="#{alumno.telefono}" />
-								<br /> <br />
-								<h:form>
-									<b:commandButton look="success" class="singup" type="submit"
-										value="#{msg['indexJoin']}"
-										rendered="#{loginBean.logged and !userPageBean.userAssistEvent(event)}" 
-										action="#{userPageBean.assistEvent(event)}" />
-								</h:form>
-								<h:form>
-									<b:commandButton look="danger" class="singup" type="submit"
-										value="#{msg['indexGoOut']}"
-										rendered="#{userPageBean.userAssistEvent(event)}"
-										action="#{userPageBean.goOutEvent(event)}" />
-								</h:form>
-								<h:form style="margin-top: 5px">
-									<b:commandButton look="primary" class="singup"
-										value="#{msg['indexDetails']}" update="detailModal"
-										ajax="true"
-										actionListener="#{eventDetailsBean.getDetailsEvent(event.id)}"
-										oncomplete="$('.modalPseudoClass').modal();return false;" />
-								</h:form>
-								<h:form style="margin-top: 5px">
-									<b:commandButton look="primary" class="singup"
-										value="#{msg['buttonModify']}" update="modifyModal"
-										ajax="true"
-										rendered="#{loginBean.logged and userPageBean.userCreateEvent(event) and userPageBean.dateBigger(event.eventDate)}"
-										actionListener="#{eventPageBean.getDetailsEvent(event.id)}"
-										oncomplete="$('.modalModifyEvent').modal();return false;" >
-										<f:ajax execute="@form" render="@form :modifyModal :formModifyEvent" />
-									</b:commandButton>
-								</h:form>
-
-							</p>
-						</b:column>
-					</b:row>
+					<div class="viewAlumnos">							
+							<h:form>
+								<h:commandLink action="#{alumnosDetailsBean.getDetailsAlumno(alumno.id)}">
+									<h2>
+										<h:outputText value="#{alumno.nombre}" />
+									</h2>
+									<p>
+										<h:outputText value="#{alumno.dni}" />
+										<br />
+										<h:outputText value="#{alumno.email}" />
+										<br />
+										<h:outputText value="#{alumno.telefono}" />
+										<br />
+										<br />				
+									</p>
+								</h:commandLink>
+							</h:form>
+						</div>	
 				</ui:repeat>
+			
 			</b:container>
 		</div>
 	</ui:define>

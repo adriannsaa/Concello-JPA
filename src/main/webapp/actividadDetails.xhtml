@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<ui:composition template="templates/defaultLayout.xhtml">
+	
+	<ui:define name="content">
+		<div id="content">
+			<div id="homeIcon">		
+				<h:form>
+					<h:link outcome="#{NavigationBean.goToHome()}">
+						<h:graphicImage style="width:100%" value="resources/homeicon.png" />
+					</h:link>
+				</h:form>
+			</div>
+			
+			<div id="addAlumnoForm">
+				<h:form>	
+					<div id="addAlumnoFormTitulo"><h3>#{msg['modifyActivity']}</h3></div>	
+					<h:messages style="color:red;position:fixed;right:24%"></h:messages>		
+			        <h:panelGrid id="panel" columns="3">
+			        
+			            <h:outputLabel for="nombre">*#{msg['addActivityName']}:</h:outputLabel>
+			            <h:inputText value="#{actividadesDetailsBean.actividadDetails.nombre}" required="true" requiredMessage="#{msg['validatorNameAct']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="participantes">*#{msg['addActivityParticipants']}:</h:outputLabel>
+			            <h:inputText value="#{actividadesDetailsBean.actividadDetails.participantes}" required="true" requiredMessage="#{msg['validatorParticipantsAct']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="horario">*#{msg['addActivityDate']}:</h:outputLabel>
+			            <h:inputText value="#{actividadesDetailsBean.actividadDetails.horario}" required="true" requiredMessage="#{msg['validatorDateAct']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="lugar">#{msg['addActivityPlace']}:</h:outputLabel>
+			            <h:inputText value="#{actividadesDetailsBean.actividadDetails.lugar}" required="true" requiredMessage="#{msg['validatorPlaceAct']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="material">*#{msg['addActivityMaterial']}:</h:outputLabel>
+			            <h:inputText value="#{actividadesDetailsBean.actividadDetails.material}" required="false" requiredMessage="#{msg['validatorMaterialAct']}"></h:inputText>
+			            <br />
+			            <br />
+			            
+			            <h:outputLabel for="observaciobesAct">#{msg['addActivityObvs']}:</h:outputLabel>
+			            <h:inputTextarea cols="20" rows="5" value="#{actividadesDetailsBean.actividadDetails.observaciones_actividad}" required="false" requiredMessage="#{msg['validatorObvsAct']}"></h:inputTextarea>
+			            <br />
+			            <br />
+			            
+			            
+			            <h:commandButton styleClass="createButtonStudent" value="#{msg['addButtonSave']}" type="submit" action="#{actividadesDetailsBean.saveDetailsActividad(actividadesDetailsBean.actividadDetails.id)}">
+			            </h:commandButton>
+  			            <h:commandButton styleClass="deleteButtonStudent" value="#{msg['deteleButtonStudent']}" type="submit" action="#{actividadesDetailsBean.deleteActividad(actividadesDetailsBean.actividadDetails.id)}">
+			            </h:commandButton>
+		       		</h:panelGrid>
+   			 	</h:form>
+   			 </div>
+   			 					
+		</div>
+				
+	</ui:define>
+	</ui:composition>
+
+</html>

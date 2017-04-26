@@ -17,6 +17,7 @@ import javax.validation.constraints.Size;
 import domain.Actividad;
 import domain.Contrato;
 import domain.Monitor;
+import service.ActividadEJB;
 import service.MonitorEJB;
 
 @Named(value = "monitoresBean")
@@ -41,7 +42,6 @@ public class MonitoresBean implements Serializable {
 	@Size(min=9, max = 9)
 	private String dni;
 
-	@Size(min=6, max = 50)
 	private String email;
 	
 	@NotNull(message="Introduzca una dirección")
@@ -80,6 +80,15 @@ public class MonitoresBean implements Serializable {
 	private Contrato itemContratoAutonomo=Contrato.Autonomo;
 	private Contrato itemContratoSubcontratado=Contrato.Subcontratado;
 	
+	private List<Monitor> listaMonitores;
+	
+	public List<Monitor> getListaMonitores() {
+		return listaMonitores;
+	}
+
+	public void setListaMonitores(List<Monitor> listaMonitores) {
+		this.listaMonitores = listaMonitores;
+	}
 
 	@PostConstruct
 	public void init() {
@@ -97,7 +106,7 @@ public class MonitoresBean implements Serializable {
 		contrato  = Contrato.Concello;		
 		observaciones_monitor = "";
 		actividadesImpartidas = new ArrayList<Actividad>();
-
+		listaMonitores = new ArrayList<Monitor>();
 	}
 
 	public String createMonitor(){
@@ -136,10 +145,24 @@ public class MonitoresBean implements Serializable {
 	
 	public List<Monitor> getAllMonitores(){
 		List<Monitor> allMonitores = new ArrayList<Monitor>();
-		allMonitores = monitorEjb.getAllMonitores();
+		allMonitores = monitorEjb.getAllMonitores();	
+		
 		return allMonitores;
 	}
-
+	
+	public Monitor getMonitorByID(int id){
+		Monitor m = new Monitor();
+		m = monitorEjb.findMonitorById(id);	
+		
+		return m;
+	}
+	
+	public List<Monitor> getListMonitores(){
+		this.listaMonitores = monitorEjb.getAllMonitores();	
+		
+		return this.listaMonitores;
+	}
+	
 	public MonitorEJB getMonitorEjb() {
 		return monitorEjb;
 	}
@@ -283,10 +306,9 @@ public class MonitoresBean implements Serializable {
 	public void setItemContratoSubcontratado(Contrato itemContratoSubcontratado) {
 		this.itemContratoSubcontratado = itemContratoSubcontratado;
 	}
-	
+		
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	
 }

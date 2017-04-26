@@ -124,7 +124,7 @@ public class ActividadEJB {
 			throws NullPointerException, IllegalArgumentException {
 		Actividad actividad = em.find(Actividad.class, actividadBorrar.getId());
 		
-		em.remove(actividad);
+		em.remove(em.merge(actividad));
 		em.flush();
 		
 		logger.log(Level.INFO, "La actividad " + actividad.getNombre() + " ha sido eliminada.");

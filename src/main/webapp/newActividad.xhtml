@@ -49,6 +49,14 @@
 			            <h:inputText value="#{actividadesBean.material}" required="false" requiredMessage="#{msg['validatorMaterialAct']}"></h:inputText>
 			            <br />
 			            <br />
+			            
+      			        <h:outputLabel for="monitorM">*#{msg['addActivityTeacher']}:</h:outputLabel>
+       			   		<h:selectOneMenu value="#{actividadesBean.monitor}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
+				   			<f:selectItems value="#{monitoresBean.getListMonitores()}" var="monitorList"
+													   itemLabel="#{monitorList.nombre}" itemValue="#{monitoresBean.getMonitorByID(monitorList.id)}" />
+				   		</h:selectOneMenu>
+			            <br />
+			            <br />	
 			 		            
 			            <h:outputLabel for="observaciones">#{msg['addActivityObvs']}:</h:outputLabel>
 			            <h:inputTextarea cols="20" rows="5" value="#{actividadesBean.observaciones_actividad}" required="false" requiredMessage="#{msg['validatorObvsAct']}"></h:inputTextarea>

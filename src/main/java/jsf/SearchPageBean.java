@@ -79,6 +79,7 @@ public class SearchPageBean implements Serializable {
 	public String doSearch() {
 		try {
 			matchedAlumnoList = alumnoEjb.findAlumnoByNombre(textSearch);
+
 		} catch (EJBException e){
 			// TODO: Check the if the exception is EntityNotFoundException and
 			// show the not found event

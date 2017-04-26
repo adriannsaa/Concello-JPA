@@ -129,7 +129,7 @@ public class MonitorEJB {
 			throws NullPointerException, IllegalArgumentException {
 		Monitor monitor = em.find(Monitor.class, monitorBorrar.getId());
 		
-		em.remove(monitor);
+		em.remove(em.merge(monitor));
 		em.flush();
 		
 		logger.log(Level.INFO, "El monitor " + monitor.getNombre() + " ha sido eliminado.");
