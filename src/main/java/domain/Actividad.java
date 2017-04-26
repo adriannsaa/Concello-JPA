@@ -4,7 +4,6 @@ import static java.util.Objects.isNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -29,26 +28,25 @@ public class Actividad implements Serializable {
 	private int id;
 	
 	@Column(length = 100,nullable = false)
+	@NotNull(message="Introduzca el nombre de la actividad")
 	@Size(min=5, max = 100)
 	private String nombre;
 
 	@Column(length = 3,nullable = true)
 	@NotNull(message="Introduzca el número de participantes")
-	@Size(min=0, max = 999)
 	private int participantes;
 
-	@Column(length = 50, nullable = false)
+	@Column(length = 200, nullable = false)
 	@NotNull(message="Introduzca un horario")
-	@Size(min=6, max = 50)
-	private Date horario;
+	@Size(min=6, max = 200)
+	private String horario;
 	
 	@Column(length = 50,nullable = false)
 	@NotNull(message="Introduzca un lugar")
 	@Size(min=5, max = 50)
 	private String lugar;
 	
-	@Column(length = 500,nullable = false)
-	@NotNull(message="Introduzca el material empleado")
+	@Column(length = 500,nullable = true)
 	@Size(min=0, max = 500)
 	private String material;
 	
@@ -75,7 +73,7 @@ public class Actividad implements Serializable {
 	 * Constructor with parameters {@link Actividad}
 	 * 
 	 */
-	public Actividad(String nombre, Monitor monitor, int participantes, Date horario, String lugar, String material, String observaciones_actividad){
+	public Actividad(String nombre, Monitor monitor, int participantes, String horario, String lugar, String material, String observaciones_actividad){
 		
 		this.nombre = nombre;
 		this.monitor = monitor;
@@ -119,11 +117,11 @@ public class Actividad implements Serializable {
 		this.participantes = participantes;
 	}
 
-	public Date getHorario() {
+	public String getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Date horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 

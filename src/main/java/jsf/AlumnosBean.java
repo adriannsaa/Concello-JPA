@@ -2,6 +2,7 @@ package jsf;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,8 +11,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import javax.swing.JOptionPane;
 
 import domain.Actividad;
 import domain.Alumno;
@@ -42,7 +41,6 @@ public class AlumnosBean implements Serializable {
 
 	@NotNull(message = "Introduzca una edad")
 	private int edad;
-
 	
 	private String email;
 
@@ -58,27 +56,26 @@ public class AlumnosBean implements Serializable {
 	private String localidad;
 
 	@NotNull(message = "Introduzca una provincia")
-	@Size(min = 5, max = 30)
+	@Size(min = 2, max = 30)
 	private String provincia;
 
 	@NotNull(message = "Introduzca un teléfono")
 	private int telefono;
 
-
 	private String nombre_autorizador;
-
 
 	private String dni_autorizador;
 
-
 	private String descuento;
-
 
 	private String observaciones_alumno;
 
 	private List<Actividad> listaDeActividades;
 	
 	private int detailedAlumnoId;
+	
+	@NotNull(message="Introduzca una fecha")
+	private Date fechaAlta;
 	
 	@PostConstruct
 	public void init() {
@@ -98,15 +95,13 @@ public class AlumnosBean implements Serializable {
 		observaciones_alumno = "";
 		listaDeActividades = new ArrayList<Actividad>();
 		detailedAlumnoId=0;
+		fechaAlta= new Date();
 	}
 
 	public String createAlumno(){
 		Alumno alumnoCreado = alumnoEjb.createAlumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono, 
-													 nombre_autorizador, dni_autorizador, descuento, observaciones_alumno);
+													 nombre_autorizador, dni_autorizador, descuento, observaciones_alumno,fechaAlta);
 		
-//		if(alumnoCreado!=null)
-//			AlumnosBean.infoBox("OK", "");
-//		else AlumnosBean.infoBox("Error", "");
 		init();
 		return "alumnos";
 	}
@@ -136,6 +131,7 @@ public class AlumnosBean implements Serializable {
 		this.descuento = alumno.getDescuento();
 		this.observaciones_alumno = alumno.getObservaciones_alumno();
 		this.listaDeActividades = alumno.getListaDeActividades();
+		this.fechaAlta = alumno.getFechaAlta();
 		
 		return "alumnoDetails";
 	}
@@ -293,11 +289,5 @@ public class AlumnosBean implements Serializable {
 	public void setDetailedAlumnoId(int detailedAlumnoId) {
 		this.detailedAlumnoId = detailedAlumnoId;
 	}
-	
-	
-    public static void infoBox(String infoMessage, String titleBar)
-    {
-        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
-    }
 
 }

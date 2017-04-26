@@ -41,14 +41,14 @@ public class MonitorEJB {
 	@PermitAll
 	@Transactional(Transactional.TxType.SUPPORTS)
 	public Monitor createMonitor(String nombre, String dni, String email, String direccion, int cp, String localidad, String provincia, 
-			int telefono, String sueldo, boolean activo, Contrato contrato, String observaciones_monitor){
+			int telefono, String sueldo, String activo, Contrato contrato, String observaciones_monitor){
 		
 		Monitor monitorCreado = new Monitor(nombre, dni, email, direccion, cp, localidad, provincia,telefono,sueldo,activo,contrato,observaciones_monitor);
 
 		em.persist(monitorCreado);
 		em.flush();
 
-		logger.log(Level.INFO, "La actividad " + monitorCreado.getNombre() + " ha sido creada.");
+		logger.log(Level.INFO, "El monitor " + monitorCreado.getNombre() + " ha sido creado.");
 		return monitorCreado;
 	}
 	
@@ -81,12 +81,12 @@ public class MonitorEJB {
 	public List<Monitor> getAllMonitores() {
 		List<Monitor> monitores = new ArrayList<Monitor>();
 		
-		monitores.addAll(em.createQuery("Select m FROM Monitor m", Monitor.class).getResultList());
+		monitores.addAll(em.createQuery("Select m FROM Monitor m ORDER BY m.id DESC", Monitor.class).getResultList());
 		return monitores;
 	}
 	
 	/*
-	 * Modificación de actividades
+	 * Modificación de monitores
 	 */
 	@PermitAll
 	@Transactional(Transactional.TxType.SUPPORTS)
@@ -108,6 +108,7 @@ public class MonitorEJB {
 		toUpdate.setTelefono(monitor.getTelefono());
 		toUpdate.setSueldo(monitor.getSueldo());
 		toUpdate.setContrato(monitor.getContrato());
+		toUpdate.setActivo(monitor.getActivo());
 		toUpdate.setObservaciones_monitor(monitor.getObservaciones_monitor());
 		toUpdate.setActividadesImpartidas(monitor.getActividadesImpartidas());
 

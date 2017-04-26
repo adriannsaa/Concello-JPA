@@ -42,7 +42,7 @@ public class ActividadEJB {
 	@PermitAll
 	@Transactional(Transactional.TxType.SUPPORTS)
 	public Actividad createActividad(String nombre, Monitor monitor, int participantes, 
-			Date horario, String lugar, String material, String observaciones_actividad){
+			String horario, String lugar, String material, String observaciones_actividad){
 		
 		Actividad actividadCreada = new Actividad(nombre, monitor, participantes, horario, lugar, material, observaciones_actividad);
 
@@ -81,7 +81,7 @@ public class ActividadEJB {
 	public List<Actividad> getAllActividades() {
 		List<Actividad> actividades = new ArrayList<Actividad>();
 		
-		actividades.addAll(em.createQuery("Select a FROM Actividad a", Actividad.class).getResultList());
+		actividades.addAll(em.createQuery("Select a FROM Actividad a ORDER BY a.id DESC", Actividad.class).getResultList());
 		return actividades;
 	}
 	

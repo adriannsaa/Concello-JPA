@@ -4,6 +4,7 @@ import static java.util.Objects.isNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -62,7 +63,7 @@ public class Alumno implements Serializable {
 	
 	@Column(length = 30,nullable = false)
 	@NotNull(message="Introduzca una provincia")
-	@Size(min=5, max = 30)
+	@Size(min=2, max = 30)
 	private String provincia;
 	
 	@Column(length = 9,nullable = false)
@@ -70,20 +71,20 @@ public class Alumno implements Serializable {
 	private int telefono;
 	
 	@Column(length = 100,nullable = true)
-
 	private String nombre_autorizador;
 	
 	@Column(length = 9,nullable = true)
-
 	private String dni_autorizador;
 	
 	@Column(length = 6,nullable = true)
-
 	private String descuento;
 	
 	@Column(length = 255,nullable = true)
-
 	private String observaciones_alumno;
+	
+	@Column
+	@NotNull(message="Introduzca una fecha")
+	private Date fechaAlta;
 
 	@ManyToMany
 	@XmlTransient
@@ -107,7 +108,7 @@ public class Alumno implements Serializable {
 	 * 
 	 */
 	public Alumno(String nombre, String dni, int edad, String email, String direccion, int cp, String localidad, String provincia, 
-			int telefono, String nombre_autorizador, String dni_autorizador, String descuento, String observaciones_alumno) {
+			int telefono, String nombre_autorizador, String dni_autorizador, String descuento, String observaciones_alumno,Date fechaAlta) {
 		
 		this.nombre = nombre;
 		this.dni = dni;
@@ -123,6 +124,7 @@ public class Alumno implements Serializable {
 		this.descuento = descuento;
 		this.observaciones_alumno = observaciones_alumno;	
 		this.listaDeActividades = new ArrayList<Actividad>();
+		this.fechaAlta = new Date();
 	}
 
 	public int getId() {
@@ -244,6 +246,14 @@ public class Alumno implements Serializable {
 	public void setListaDeActividades(List<Actividad> listaDeActividades) {
 		this.listaDeActividades = listaDeActividades;
 	}
+	
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -304,6 +314,7 @@ public class Alumno implements Serializable {
 				+ "Nombre_Autorizador: " + nombre_autorizador + " \n "
 				+ "Descuento:" + descuento + " \n "
 				+ "Observaciones_Alumno: " + observaciones_alumno + " \n "
+				+ "Fecha de alta: " + fechaAlta + " \n" 
 				+ "Lista de actividades: " + listaDeActividades;
 	}
 	

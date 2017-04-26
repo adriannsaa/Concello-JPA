@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<ui:composition template="templates/defaultLayout.xhtml">
+	
+	<ui:define name="content">
+		<div id="content">
+			<div id="homeIcon">		
+				<h:form>
+					<h:link outcome="#{NavigationBean.goToHome()}">
+						<h:graphicImage style="width:100%" value="resources/homeicon.png" />
+					</h:link>
+				</h:form>
+			</div>
+			
+			<div id="addAlumnoForm">
+				<h:form>	
+					<div id="addAlumnoFormTitulo"><h3>#{msg['modifyTeacher']}</h3></div>
+					<h:messages style="color:red;position:fixed;right:24%"></h:messages>			
+			        <h:panelGrid id="panel" columns="3">
+			        
+			            <h:outputLabel for="nombre">*#{msg['addTeacherName']}:</h:outputLabel>
+			            <h:inputText value="#{monitoresDetailsBean.monitorDetails.nombre}" required="true" requiredMessage="#{msg['validatorNameMon']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="dni">*#{msg['addTeacherDni']}:</h:outputLabel>
+			            <h:inputText value="#{monitoresDetailsBean.monitorDetails.dni}" required="true" requiredMessage="#{msg['validatorDniMon']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="email">#{msg['addTeacherEmail']}:</h:outputLabel>
+			            <h:inputText value="#{monitoresDetailsBean.monitorDetails.email}" required="false" requiredMessage="#{msg['validatorEmailMon']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="direccion">*#{msg['addTeacherAddress']}:</h:outputLabel>
+			            <h:inputText value="#{monitoresDetailsBean.monitorDetails.direccion}" required="true" requiredMessage="#{msg['validatorAddressMon']}"></h:inputText>
+			            <br />
+			            <br />
+			            
+				        <h:outputLabel for="cp">*#{msg['addTeacherCp']}:</h:outputLabel>
+			            <h:inputText value="#{monitoresDetailsBean.monitorDetails.cp}" required="true" requiredMessage="#{msg['validatorCpMon']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="localidad">*#{msg['addTeachertCity']}:</h:outputLabel>
+			            <h:inputText value="#{monitoresDetailsBean.monitorDetails.localidad}" required="true" requiredMessage="#{msg['validatorLocationMon']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="provincia">*#{msg['addTeacherState']}:</h:outputLabel>
+			            <h:inputText value="#{monitoresDetailsBean.monitorDetails.provincia}" required="true" requiredMessage="#{msg['validatorStateMon']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="tlf">*#{msg['addTeacherPhone']}:</h:outputLabel>
+			            <h:inputText value="#{monitoresDetailsBean.monitorDetails.telefono}" required="true" requiredMessage="#{msg['validatorTlfMon']}"></h:inputText>
+			            <br />
+			            <br />
+			 
+			            <h:outputLabel for="sueldo">#{msg['addTeacherSalary']}:</h:outputLabel>
+			            <h:inputText value="#{monitoresDetailsBean.monitorDetails.sueldo}" required="false" requiredMessage="#{msg['validatorSalaryMon']}"></h:inputText>
+			            <br />
+			            <br />
+			            
+			            <h:outputLabel for="activo">#{msg['addTeacherActive']}:</h:outputLabel>
+       			   	    <h:selectOneMenu value="#{monitoresDetailsBean.monitorDetails.activo}" required="false" requiredMessage="#{msg['validatorActiveMon']}">
+				   			<f:selectItem itemValue="Activo" itemLabel="Activo" />
+				   			<f:selectItem itemValue="Inactivo" itemLabel="Inactivo" />
+				   		</h:selectOneMenu>
+			            <br />
+			            <br />	
+			            
+  			            <h:outputLabel for="contratoM">*#{msg['addTeacherContract']}:</h:outputLabel>
+       			   		<h:selectOneMenu value="#{monitoresDetailsBean.monitorDetails.contrato}" required="true" requiredMessage="#{msg['validatorContractMon']}">
+				   			<f:selectItem itemValue="#{monitoresBean.itemContratoConcello}" itemLabel="Concello" />
+				   			<f:selectItem itemValue="#{monitoresBean.itemContratoAutonomo}" itemLabel="Autonomo" />
+				   			<f:selectItem itemValue="#{monitoresBean.itemContratoSubcontratado}" itemLabel="Subcontratado" />
+				   		</h:selectOneMenu>
+			            <br />
+			            <br />				            
+			            
+			            <h:outputLabel for="observacionesM">#{msg['addTeacherObser']}:</h:outputLabel>
+			            <h:inputTextarea cols="20" rows="5" value="#{monitoresDetailsBean.monitorDetails.observaciones_monitor}" required="false" requiredMessage="#{msg['validatorTeacherObvs']}"></h:inputTextarea>
+			            <br />
+			            <br />
+			            
+			            <h:commandButton styleClass="createButtonStudent" value="#{msg['addButtonSave']}" type="submit" action="#{monitoresDetailsBean.saveDetailsMonitor(monitoresDetailsBean.monitorDetails.id)}">
+			            </h:commandButton>
+  			            <h:commandButton styleClass="deleteButtonStudent" value="#{msg['deteleButtonStudent']}" type="submit" action="#{monitoresDetailsBean.deleteMonitor(monitoresDetailsBean.monitorDetails.id)}">
+			            </h:commandButton>
+		       		</h:panelGrid>
+   			 	</h:form>
+   			 </div>
+   			 					
+		</div>
+				
+	</ui:define>
+	</ui:composition>
+
+</html>

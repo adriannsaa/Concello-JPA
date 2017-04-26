@@ -20,7 +20,7 @@ public abstract class Monitor_ {
 	public static volatile SingularAttribute<Monitor, Integer> telefono;
 	public static volatile SingularAttribute<Monitor, String> dni;
 	public static volatile SingularAttribute<Monitor, String> email;
-	public static volatile SingularAttribute<Monitor, Boolean> activo;
+	public static volatile SingularAttribute<Monitor, String> activo;
 
 }
 

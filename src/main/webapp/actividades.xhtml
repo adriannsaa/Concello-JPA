@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<ui:composition template="templates/defaultLayout.xhtml">
+	
+	<ui:define name="content">
+		<div id="content" class="paddedContent">
+				<b:container>
+					<b:row>	
+						<h:form>
+							<b:commandButton styleClass="addButton" type="submit"
+								value="#{msg['actividadessAdd']}"
+								action="#{NavigationBean.goToNewActividad()}" />
+						</h:form>
+					</b:row>
+					<b:row>	
+	    				<div id="homeIcon">		
+	    					<h:form>
+								<h:link outcome="#{NavigationBean.goToHome()}">
+									<h:graphicImage style="width:100%" value="resources/homeicon.png" />
+								</h:link>
+							</h:form>
+						</div>
+						<ui:repeat value="#{alumnosBean.getAllAlumnos()}" var="alumno" varStatus="estado">
+						<div class="viewAlumnos">							
+							<h:form>
+								<h:commandLink action="#{alumnosDetailsBean.getDetailsAlumno(alumno.id)}">
+									<h2>
+										<h:outputText value="#{alumno.nombre}" />
+									</h2>
+									<p>
+										<h:outputText value="#{alumno.dni}" />
+										<br />
+										<h:outputText value="#{alumno.email}" />
+										<br />
+										<h:outputText value="#{alumno.telefono}" />
+										<br />
+										<br />				
+									</p>
+								</h:commandLink>
+							</h:form>
+						</div>	
+						</ui:repeat>
+					</b:row>
+				</b:container>
+		</div>
+				
+	</ui:define>
+	</ui:composition>
+
+</html>

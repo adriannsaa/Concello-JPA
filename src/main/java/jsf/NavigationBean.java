@@ -20,4 +20,20 @@ public class NavigationBean implements Serializable{
 	public String goToHome() {
 	    return "index";
 	}
+	
+	public String goToActividades() {
+	    return "actividades";
+	}
+	
+	public String goToNewActividad() {
+	    return "newActividad";
+	}
+	
+	public String goToMonitores() {
+	    return "monitores";
+	}
+	
+	public String goToNewMonitor() {
+	    return "newMonitor";
+	}
 }

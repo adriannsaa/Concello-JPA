@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,10 +43,10 @@ public class AlumnoEJB {
 	@Transactional(Transactional.TxType.SUPPORTS)
 	public Alumno createAlumno(String nombre, String dni, int edad, String email, String direccion, int cp,
 			String localidad, String provincia, int telefono, String nombre_autorizador, String dni_autorizador,
-			String descuento, String observaciones_alumno) {
+			String descuento, String observaciones_alumno,Date fechaAlta) {
 
 		Alumno alumnoCreado = new Alumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono,
-				nombre_autorizador, dni_autorizador, descuento, observaciones_alumno);
+				nombre_autorizador, dni_autorizador, descuento, observaciones_alumno,fechaAlta);
 
 		em.persist(alumnoCreado);
 		em.flush();

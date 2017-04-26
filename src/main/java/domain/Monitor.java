@@ -40,7 +40,6 @@ public class Monitor implements Serializable {
 	private String dni;
 
 	@Column(length = 50, nullable = false)
-	@NotNull(message="Introduzca un Email")
 	@Size(min=6, max = 50)
 	private String email;
 	
@@ -51,7 +50,6 @@ public class Monitor implements Serializable {
 	
 	@Column(length = 5,nullable = false)
 	@NotNull(message="Introduzca un código postal")
-	@Size(min=5, max = 5)
 	private int cp;
 	
 	@Column(length = 50,nullable = false)
@@ -61,22 +59,23 @@ public class Monitor implements Serializable {
 	
 	@Column(length = 30,nullable = false)
 	@NotNull(message="Introduzca una provincia")
-	@Size(min=5, max = 30)
+	@Size(min=2, max = 30)
 	private String provincia;
 	
 	@Column(length = 9,nullable = false)
 	@NotNull(message="Introduzca un teléfono")
-	@Size(min=9, max = 9)
 	private int telefono;
 	
 	@Column(length = 15,nullable = true)
 	@Size(min=0, max = 15)
 	private String sueldo;
 	
-	@Column(nullable = false)
-	private boolean activo;
+	@Column
+	@NotNull(message="Activo o No activo")
+	private String activo;
 	
 	@Column
+	@NotNull(message="Seleccione un contrato")
 	@Enumerated(EnumType.STRING)
 	private Contrato contrato;
 	
@@ -90,7 +89,7 @@ public class Monitor implements Serializable {
 
 
 	/**
-	 * Constructor a new instance of {@link Alumno} This constructor is empty
+	 * Constructor a new instance of {@link Monitor} This constructor is empty
 	 * because is required
 	 */
 	public Monitor() {
@@ -98,12 +97,12 @@ public class Monitor implements Serializable {
 	}
 	
 	/**
-	 * Constructor with parameters {@link Alumno}
+	 * Constructor with parameters {@link Monitor}
 	 * 
 	 */
 	
 	public Monitor(String nombre, String dni, String email, String direccion, int cp, String localidad, String provincia, 
-			int telefono, String sueldo, boolean activo, Contrato contrato, String observaciones_monitor) {
+			int telefono, String sueldo, String activo, Contrato contrato, String observaciones_monitor) {
 		
 		this.nombre = nombre;
 		this.dni = dni;
@@ -201,11 +200,11 @@ public class Monitor implements Serializable {
 		this.sueldo = sueldo;
 	}
 
-	public boolean isActivo() {
+	public String getActivo() {
 		return activo;
 	}
 
-	public void setActivo(boolean activo) {
+	public void setActivo(String activo) {
 		this.activo = activo;
 	}
 

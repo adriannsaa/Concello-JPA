@@ -1,6 +1,5 @@
 package domain;
 
-import java.util.Date;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -9,7 +8,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Actividad_ {
 
 	public static volatile ListAttribute<Actividad, Alumno> listaDeAlumnos;
-	public static volatile SingularAttribute<Actividad, Date> horario;
+	public static volatile SingularAttribute<Actividad, String> horario;
 	public static volatile SingularAttribute<Actividad, String> material;
 	public static volatile SingularAttribute<Actividad, String> lugar;
 	public static volatile SingularAttribute<Actividad, String> observaciones_actividad;
