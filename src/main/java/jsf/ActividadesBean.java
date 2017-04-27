@@ -62,6 +62,8 @@ public class ActividadesBean implements Serializable {
 
 	private Monitor monitor;	
 	
+	private int monitorId;
+
 	@PostConstruct
 	public void init() {
 		nombre ="";
@@ -110,7 +112,11 @@ public class ActividadesBean implements Serializable {
 		allActividades = actividadEjb.getAllActividades();
 
 		return allActividades;
-	}
+	}	
+	
+	public void asignarMonitorById(int id){
+	       if (id != 0 )  monitor = monitorEjb.findMonitorById(id);    
+	    }
 	
 	public ActividadEJB getActividadEjb() {
 		return actividadEjb;
@@ -200,7 +206,13 @@ public class ActividadesBean implements Serializable {
 		this.monitorEjb = monitorEjb;
 	}
 
+	public int getMonitorId() {
+		return monitorId;
+	}
 
+	public void setMonitorId(int monitorId) {
+		this.monitorId = monitorId;
+	}
 	
 	public static long getSerialversionuid() {
 		return serialVersionUID;

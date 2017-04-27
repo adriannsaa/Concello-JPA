@@ -242,55 +242,97 @@ public class Monitor implements Serializable {
 	 * @return id the hash code for the Monitor entity
 	 */
 	@Override
-	public final int hashCode() {
-		return id;
+	public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+//	result = prime * result + ((activo == null) ? 0 : activo.hashCode());
+	result = prime * result + cp;
+	result = prime * result + ((direccion == null) ? 0 : direccion.hashCode());
+	result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+	result = prime * result + ((email == null) ? 0 : email.hashCode());
+	result = prime * result + ((localidad == null) ? 0 : localidad.hashCode());
+	result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+	result = prime * result + ((provincia == null) ? 0 : provincia.hashCode());
+	result = prime * result + ((sueldo == null) ? 0 : sueldo.hashCode());
+	result = prime * result + telefono;
+	return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+	if (this == obj)
+	return true;
+	if (obj == null)
+	return false;
+	if (getClass() != obj.getClass())
+	return false;
+	Monitor other = (Monitor) obj;
+//	if (!activo.equals(other.activo))
+//	return false;
+	if (cp != other.cp)
+	return false;
+	if (direccion == null) {
+	if (other.direccion != null)
+	return false;
+	} else if (!direccion.equals(other.direccion))
+	return false;
+	if (dni == null) {
+	if (other.dni != null)
+	return false;
+	} else if (!dni.equals(other.dni))
+	return false;
+	if (email == null) {
+	if (other.email != null)
+	return false;
+	} else if (!email.equals(other.email))
+	return false;
+	if (localidad == null) {
+	if (other.localidad != null)
+	return false;
+	} else if (!localidad.equals(other.localidad))
+	return false;
+	if (nombre == null) {
+	if (other.nombre != null)
+	return false;
+	} else if (!nombre.equals(other.nombre))
+	return false;
+	if (provincia == null) {
+	if (other.provincia != null)
+	return false;
+	} else if (!provincia.equals(other.provincia))
+	return false;
+	if (sueldo == null) {
+	if (other.sueldo != null)
+	return false;
+	} else if (!sueldo.equals(other.sueldo))
+	return false;
+	if (telefono != other.telefono)
+	return false;
+	return true;
 	}
 
 	/**
-	 * Override the equals method
+	 * Override the toString method
 	 * 
-	 * @param obj
-	 *            This is an Monitor to compare
-	 * 
-	 * @return if two monitores are equals or not
+	 * @return the Monitor object
 	 */
-//	@Override
-//	public final boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (isNull(obj) || !(obj instanceof Monitor))
-//			return false;
-//
-//		Monitor other = (Monitor) obj;
-//		if (isNull(obj)) {
-//			return isNull(other.id);
-//		} else {
-//			return this.dni.equalsIgnoreCase(other.dni);
-//		}
-//	}
-//
-//	/**
-//	 * Override the toString method
-//	 * 
-//	 * @return the Monitor object
-//	 */
-//
-//	@Override
-//	public String toString() {
-//		return "Detalles del monitor \n"
-//				+ "Id " + id + " \n"
-//				+ "Nombre: " + nombre + " \n "
-//				+ "DNI: " + dni + " \n"
-//				+ "Email:" + email + " \n "
-//				+ "Direccion: " + direccion + " \n "
-//				+ "CP: " + cp + " \n "
-//				+ "Localidad " + localidad + " \n"
-//				+ "Provincia: " + provincia + " \n "
-//				+ "Telefono: " + telefono + " \n"
-//				+ "Sueldo: " + sueldo + " \n "
-//				+ "Activo:" + activo + " \n "
-//				+ "Contrato: " + contrato + " \n "
-//				+ "Observaciones del monitor: " + observaciones_monitor;
-//	}
+
+	@Override
+	public String toString() {
+		return "Detalles del monitor \n"
+				+ "Id " + id + " \n"
+				+ "Nombre: " + nombre + " \n "
+				+ "DNI: " + dni + " \n"
+				+ "Email:" + email + " \n "
+				+ "Direccion: " + direccion + " \n "
+				+ "CP: " + cp + " \n "
+				+ "Localidad " + localidad + " \n"
+				+ "Provincia: " + provincia + " \n "
+				+ "Telefono: " + telefono + " \n"
+				+ "Sueldo: " + sueldo + " \n "
+				+ "Activo:" + activo + " \n "
+				+ "Contrato: " + contrato + " \n "
+				+ "Observaciones del monitor: " + observaciones_monitor;
+	}
 	
 }

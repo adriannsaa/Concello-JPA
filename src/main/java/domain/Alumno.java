@@ -286,10 +286,10 @@ public class Alumno implements Serializable {
 
 		Alumno other = (Alumno) obj;
 		if (isNull(obj)) {
-			return isNull(other.dni);
-		} else {
+			return false;
+			} else {
 			return this.dni.equalsIgnoreCase(other.dni);
-		}
+			}
 	}
 
 	/**

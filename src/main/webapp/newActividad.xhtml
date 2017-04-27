@@ -51,9 +51,9 @@
 			            <br />
 			            
       			        <h:outputLabel for="monitorM">*#{msg['addActivityTeacher']}:</h:outputLabel>
-       			   		<h:selectOneMenu value="#{actividadesBean.monitor}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
+       			   		<h:selectOneMenu value="#{actividadesBean.monitorId}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
 				   			<f:selectItems value="#{monitoresBean.getListMonitores()}" var="monitorList"
-													   itemLabel="#{monitorList.nombre}" itemValue="#{monitoresBean.getMonitorByID(monitorList.id)}" />
+													   itemLabel="#{monitorList.nombre}" itemValue="#{monitorList.id}" />
 				   		</h:selectOneMenu>
 			            <br />
 			            <br />	
@@ -63,7 +63,7 @@
 			            <br />
 			            <br />
 			            
-			            <h:commandButton styleClass="createButtonSubmit" value="#{msg['addButtonSubmit']}" type="submit" action="#{actividadesBean.createActividad()}">
+			            <h:commandButton styleClass="createButtonSubmit" value="#{msg['addButtonSubmit']}" type="submit" action="#{actividadesBean.createActividad()}" onclick="#{actividadesBean.asignarMonitorById(monitorList.id)}">
 			            </h:commandButton>		      		       		
 		       		</h:panelGrid>
 

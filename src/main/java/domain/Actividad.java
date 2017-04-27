@@ -58,9 +58,9 @@ public class Actividad implements Serializable {
 	@ManyToMany(mappedBy="listaDeActividades", cascade = CascadeType.ALL)
 	private List<Alumno> listaDeAlumnos;
 
-	@ManyToOne (cascade = CascadeType.ALL)
-	@JoinColumn(name = "monitor_actividad")
-	private Monitor monitor = new Monitor();
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "monitor_id")
+	private Monitor monitor;
 	
 	/**
 	 * Constructor a new instance of {@link Actividad} This constructor is empty
@@ -180,6 +180,7 @@ public class Actividad implements Serializable {
 	 * 
 	 * @return if two actividades are equals or not
 	 */
+	
 	@Override
 	public final boolean equals(Object obj) {
 		if (this == obj)
@@ -189,10 +190,10 @@ public class Actividad implements Serializable {
 
 		Actividad other = (Actividad) obj;
 		if (isNull(obj)) {
-			return isNull(other.nombre);
-		} else {
+			return false;
+			} else {
 			return this.nombre.equalsIgnoreCase(other.nombre);
-		}
+			}
 	}
 
 	/**
