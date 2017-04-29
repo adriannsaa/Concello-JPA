@@ -50,11 +50,12 @@
 			            <br />
 			            <br />
 			            
-      			        <h:outputLabel for="monitorM">*#{msg['addActivityTeacher']}:</h:outputLabel>
-       			   		<h:selectOneMenu value="#{actividadesBean.monitorId}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
+      			        <h:outputLabel for="monitorOut">*#{msg['addActivityTeacher']}:</h:outputLabel>
+       			   		<h:selectOneMenu id ="monitorM" value="#{actividadesBean.monitorId}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
 				   			<f:selectItems value="#{monitoresBean.getListMonitores()}" var="monitorList"
-													   itemLabel="#{monitorList.nombre}" itemValue="#{monitorList.id}" />
-				   		</h:selectOneMenu>
+													   itemLabel="#{monitorList.nombre}" itemValue="#{monitorList.id}" />												   
+							<f:ajax listener="#{actividadesBean.asignarMonitorById(monitorList.id)}"/>
+				   		</h:selectOneMenu>				   		
 			            <br />
 			            <br />	
 			 		            
@@ -63,7 +64,7 @@
 			            <br />
 			            <br />
 			            
-			            <h:commandButton styleClass="createButtonSubmit" value="#{msg['addButtonSubmit']}" type="submit" action="#{actividadesBean.createActividad()}" onclick="#{actividadesBean.asignarMonitorById(monitorList.id)}">
+			            <h:commandButton styleClass="createButtonSubmit" value="#{msg['addButtonSubmit']}" type="submit" action="#{actividadesBean.createActividad()}">
 			            </h:commandButton>		      		       		
 		       		</h:panelGrid>
 

@@ -115,7 +115,7 @@ public class ActividadesBean implements Serializable {
 	}	
 	
 	public void asignarMonitorById(int id){
-	       if (id != 0 )  monitor = monitorEjb.findMonitorById(id);    
+	       if (id != 0 )  monitor = monitorEjb.findMonitorById(id);
 	    }
 	
 	public ActividadEJB getActividadEjb() {
