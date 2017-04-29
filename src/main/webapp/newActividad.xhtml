@@ -50,14 +50,18 @@
 			            <br />
 			            <br />
 			            
-      			        <h:outputLabel for="monitorOut">*#{msg['addActivityTeacher']}:</h:outputLabel>
-       			   		<h:selectOneMenu id ="monitorM" value="#{actividadesBean.monitorId}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
+      			        <h:outputLabel for="monitorM">*#{msg['addActivityTeacher']}:</h:outputLabel>
+       			   		<h:selectOneMenu value="#{actividadesBean.monitorId}" required="true" requiredMessage="#{msg['validatorTeacherAct']}" 
+       			   		onchange="submit()" valueChangeListener="#{actividadesBean.asignarMonitorById()}">
 				   			<f:selectItems value="#{monitoresBean.getListMonitores()}" var="monitorList"
-													   itemLabel="#{monitorList.nombre}" itemValue="#{monitorList.id}" />												   
-							<f:ajax listener="#{actividadesBean.asignarMonitorById(monitorList.id)}"/>
-				   		</h:selectOneMenu>				   		
+													   itemLabel="#{monitorList.nombre}" itemValue="#{monitorList.id}" />
+				   		</h:selectOneMenu>
 			            <br />
 			            <br />	
+			            <h:outputLabel>#{actividadesBean.monitor.id}:</h:outputLabel>
+			             <h:outputLabel>#{actividadesBean.monitorId}:</h:outputLabel>
+			            <br />
+			            <br />
 			 		            
 			            <h:outputLabel for="observaciones">#{msg['addActivityObvs']}:</h:outputLabel>
 			            <h:inputTextarea cols="20" rows="5" value="#{actividadesBean.observaciones_actividad}" required="false" requiredMessage="#{msg['validatorObvsAct']}"></h:inputTextarea>

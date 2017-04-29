@@ -311,28 +311,28 @@ public class Monitor implements Serializable {
 	return true;
 	}
 
-	/**
-	 * Override the toString method
-	 * 
-	 * @return the Monitor object
-	 */
-
-	@Override
-	public String toString() {
-		return "Detalles del monitor \n"
-				+ "Id " + id + " \n"
-				+ "Nombre: " + nombre + " \n "
-				+ "DNI: " + dni + " \n"
-				+ "Email:" + email + " \n "
-				+ "Direccion: " + direccion + " \n "
-				+ "CP: " + cp + " \n "
-				+ "Localidad " + localidad + " \n"
-				+ "Provincia: " + provincia + " \n "
-				+ "Telefono: " + telefono + " \n"
-				+ "Sueldo: " + sueldo + " \n "
-				+ "Activo:" + activo + " \n "
-				+ "Contrato: " + contrato + " \n "
-				+ "Observaciones del monitor: " + observaciones_monitor;
-	}
+//	/**
+//	 * Override the toString method
+//	 * 
+//	 * @return the Monitor object
+//	 */
+//
+//	@Override
+//	public String toString() {
+//		return "Detalles del monitor \n"
+//				+ "Id " + id + " \n"
+//				+ "Nombre: " + nombre + " \n "
+//				+ "DNI: " + dni + " \n"
+//				+ "Email:" + email + " \n "
+//				+ "Direccion: " + direccion + " \n "
+//				+ "CP: " + cp + " \n "
+//				+ "Localidad " + localidad + " \n"
+//				+ "Provincia: " + provincia + " \n "
+//				+ "Telefono: " + telefono + " \n"
+//				+ "Sueldo: " + sueldo + " \n "
+//				+ "Activo:" + activo + " \n "
+//				+ "Contrato: " + contrato + " \n "
+//				+ "Observaciones del monitor: " + observaciones_monitor;
+//	}
 	
 }

@@ -33,7 +33,7 @@ public class MonitorEJB {
 	@Resource
 	protected SessionContext ctx;
 	
-	private static Logger logger = Logger.getLogger(AlumnoEJB.class.getName());
+	private static Logger logger = Logger.getLogger(MonitorEJB.class.getName());
 	
 	/*
 	 * Creación de Monitor

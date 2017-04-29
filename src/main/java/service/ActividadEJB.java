@@ -34,7 +34,7 @@ public class ActividadEJB {
 	@Resource
 	protected SessionContext ctx;
 	
-	private static Logger logger = Logger.getLogger(AlumnoEJB.class.getName());
+	private static Logger logger = Logger.getLogger(Actividad.class.getName());
 	
 	/*
 	 * Creación de Actividad

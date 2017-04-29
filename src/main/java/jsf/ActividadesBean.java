@@ -78,6 +78,7 @@ public class ActividadesBean implements Serializable {
 	}
 
 	public String createActividad(){
+		
 		Actividad actividadCreada = actividadEjb.createActividad(nombre, monitor, participantes, horario, lugar, material, observaciones_actividad);
 
 		init();
@@ -114,8 +115,9 @@ public class ActividadesBean implements Serializable {
 		return allActividades;
 	}	
 	
-	public void asignarMonitorById(int id){
-	       if (id != 0 )  monitor = monitorEjb.findMonitorById(id);
+	public void asignarMonitorById(){
+		setMonitor(monitorEjb.findMonitorById(monitorId));
+	       //if (id != 0 )  this.monitor = monitorEjb.findMonitorById(id);
 	    }
 	
 	public ActividadEJB getActividadEjb() {
