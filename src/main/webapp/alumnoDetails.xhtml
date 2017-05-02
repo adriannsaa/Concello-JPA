@@ -87,6 +87,13 @@
 			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.fechaAlta}" readonly="true"></h:inputText>
 			            <br />
 			            
+			            <h:outputLabel for="actividadesDisponibles">#{msg['addStudentActivityList']}:</h:outputLabel>
+						<h:selectManyCheckbox value="#{alumnosBean.listaDeActividades}">
+				   			<f:selectItems value="#{actividadesBean.getAllActividades()}" />							
+				   		</h:selectManyCheckbox>
+				   		<br />
+						<br />
+			            
 			            <h:outputLabel for="observaciones">#{msg['addStudentObser']}:</h:outputLabel>
 			            <h:inputTextarea cols="20" rows="5" value="#{alumnosDetailsBean.alumnoDetails.observaciones_alumno}" required="false" requiredMessage="#{msg['validatorStudentObvs']}"></h:inputTextarea>
 			            <br />

@@ -46,7 +46,7 @@ public class ActividadEJB {
 		
 		Actividad actividadCreada = new Actividad(nombre, monitor, participantes, horario, lugar, material, observaciones_actividad);
 
-		em.persist(actividadCreada);
+		em.persist(em.merge(actividadCreada));
 		em.flush();
 		
 		logger.log(Level.INFO, "La actividad " + actividadCreada.getNombre() + " ha sido creada.");

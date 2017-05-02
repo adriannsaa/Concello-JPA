@@ -80,7 +80,8 @@ public class ActividadesBean implements Serializable {
 	public String createActividad(){
 		
 		Actividad actividadCreada = actividadEjb.createActividad(nombre, monitor, participantes, horario, lugar, material, observaciones_actividad);
-
+		monitor.addActividadesImpartidas(actividadCreada);
+		
 		init();
 		return "actividades";
 	}

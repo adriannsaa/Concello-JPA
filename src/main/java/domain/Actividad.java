@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -55,10 +56,10 @@ public class Actividad implements Serializable {
 	@Size(min=0, max = 255)
 	private String observaciones_actividad;
 	
-	@ManyToMany(mappedBy="listaDeActividades", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy="listaDeActividades", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Alumno> listaDeAlumnos;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "monitor_id")
 	private Monitor monitor;
 	
@@ -204,16 +205,18 @@ public class Actividad implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Detalles de la actividad \n"
-				+ "Id " + id + " \n"
-				+ "Nombre: " + nombre + " \n "
-				+ "Monitor: " + monitor + " \n"
-				+ "Participantes: " + participantes + " \n "
-				+ "Horario:" + horario + " \n "
-				+ "Lugar: " + lugar + " \n "
-				+ "Material: " + material + " \n "
-				+ "Observariones_Actividad " + observaciones_actividad + " \n"
-				+ "Lista de alumnos: " + listaDeAlumnos;
+//		return "Detalles de la actividad \n"
+//				+ "Id " + id + " \n"
+//				+ "Nombre: " + nombre + " \n "
+//				+ "Monitor: " + monitor + " \n"
+//				+ "Participantes: " + participantes + " \n "
+//				+ "Horario:" + horario + " \n "
+//				+ "Lugar: " + lugar + " \n "
+//				+ "Material: " + material + " \n "
+//				+ "Observariones_Actividad " + observaciones_actividad + " \n"
+//				+ "Lista de alumnos: " + listaDeAlumnos;
+		
+		return nombre;
 	}
 
 

@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -86,7 +87,7 @@ public class Alumno implements Serializable {
 	@NotNull(message="Introduzca una fecha")
 	private Date fechaAlta;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@XmlTransient
 	@JoinTable(name = "Asistir", 
 			joinColumns = @JoinColumn(name = "alumno_id", referencedColumnName = "id"),
@@ -108,7 +109,7 @@ public class Alumno implements Serializable {
 	 * 
 	 */
 	public Alumno(String nombre, String dni, int edad, String email, String direccion, int cp, String localidad, String provincia, 
-			int telefono, String nombre_autorizador, String dni_autorizador, String descuento, String observaciones_alumno,Date fechaAlta) {
+			int telefono, String nombre_autorizador, String dni_autorizador, String descuento, String observaciones_alumno,Date fechaAlta, List<Actividad> listaDeActividades) {
 		
 		this.nombre = nombre;
 		this.dni = dni;

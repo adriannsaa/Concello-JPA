@@ -77,6 +77,8 @@ public class AlumnosBean implements Serializable {
 	@NotNull(message="Introduzca una fecha")
 	private Date fechaAlta;
 	
+	private int actividadID;	
+
 	@PostConstruct
 	public void init() {
 
@@ -100,7 +102,7 @@ public class AlumnosBean implements Serializable {
 
 	public String createAlumno(){
 		Alumno alumnoCreado = alumnoEjb.createAlumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono, 
-													 nombre_autorizador, dni_autorizador, descuento, observaciones_alumno,fechaAlta);
+													 nombre_autorizador, dni_autorizador, descuento, observaciones_alumno,fechaAlta,listaDeActividades);
 		
 		init();
 		return "alumnos";
@@ -140,7 +142,12 @@ public class AlumnosBean implements Serializable {
 		List<Alumno> allAlumnos = new ArrayList<Alumno>();
 		allAlumnos = alumnoEjb.getAllAlumnos();
 		return allAlumnos;
-	}
+	}	
+	
+	public void asignarActividadById(){
+		listaDeActividades.add(actividadEjb.findActividadById(actividadID));
+
+	    }
 
 	public AlumnoEJB getAlumnoEjb() {
 		return alumnoEjb;
@@ -288,6 +295,22 @@ public class AlumnosBean implements Serializable {
 
 	public void setDetailedAlumnoId(int detailedAlumnoId) {
 		this.detailedAlumnoId = detailedAlumnoId;
+	}
+	
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+
+	public int getActividadID() {
+		return actividadID;
+	}
+
+	public void setActividadID(int actividadID) {
+		this.actividadID = actividadID;
 	}
 
 }

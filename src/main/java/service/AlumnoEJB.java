@@ -19,6 +19,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.transaction.Transactional;
 
+import domain.Actividad;
 import domain.Alumno;
 
 @PermitAll
@@ -43,10 +44,10 @@ public class AlumnoEJB {
 	@Transactional(Transactional.TxType.SUPPORTS)
 	public Alumno createAlumno(String nombre, String dni, int edad, String email, String direccion, int cp,
 			String localidad, String provincia, int telefono, String nombre_autorizador, String dni_autorizador,
-			String descuento, String observaciones_alumno,Date fechaAlta) {
+			String descuento, String observaciones_alumno,Date fechaAlta,List<Actividad> listaDeActividades) {
 
 		Alumno alumnoCreado = new Alumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono,
-				nombre_autorizador, dni_autorizador, descuento, observaciones_alumno,fechaAlta);
+				nombre_autorizador, dni_autorizador, descuento, observaciones_alumno,fechaAlta,listaDeActividades);
 
 		em.persist(alumnoCreado);
 		em.flush();

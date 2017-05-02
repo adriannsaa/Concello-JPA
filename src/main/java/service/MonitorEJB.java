@@ -17,6 +17,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import domain.Actividad;
 import domain.Contrato;
 import domain.Monitor;
 
@@ -115,9 +116,8 @@ public class MonitorEJB {
 		em.merge(toUpdate);
 		em.flush();
 
-		logger.log(Level.INFO, "El monitor ha sido actualizada.");
+		logger.log(Level.INFO, "El monitor ha sido actualizado.");
 	}
-
 	
 	/*
 	 * Eliminar monitores

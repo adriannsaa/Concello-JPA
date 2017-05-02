@@ -48,6 +48,15 @@
 			            <br />
 			            <br />
 			            
+			            <h:outputLabel for="monitorM">*#{msg['addActivityTeacher']}:</h:outputLabel>
+       			   		<h:selectOneMenu value="#{actividadesBean.monitorId}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
+				   			<f:selectItems value="#{monitoresBean.getListMonitores()}" var="monitorList"
+													   itemLabel="#{monitorList.nombre}" itemValue="#{monitorList.id}" />
+							<f:ajax listener="#{actividadesBean.asignarMonitorById()}"/>						   
+				   		</h:selectOneMenu>
+			            <br />
+			            <br />	
+			            
 			            <h:outputLabel for="observaciobesAct">#{msg['addActivityObvs']}:</h:outputLabel>
 			            <h:inputTextarea cols="20" rows="5" value="#{actividadesDetailsBean.actividadDetails.observaciones_actividad}" required="false" requiredMessage="#{msg['validatorObvsAct']}"></h:inputTextarea>
 			            <br />
