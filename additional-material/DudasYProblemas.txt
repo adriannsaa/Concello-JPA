@@ -1,0 +1,16 @@
+Borra todo en cascada. Borra un monitor y borra la actividad. Viceversa.
+
+ListaDeActividades de los alumnos las guarda pero no las almacena en la base de datos en ningun lado.
+Tabla Actividad -> Actividad_monitor , monitor_actividad NULL
+
+Eliminar alumnos al pinchar en actividad.
+COMPROBAR DNIS! SINO PETAN al repetirse.
+
+Al modificar un alumno, las actividades que tiene no las modifica.
+Al crar un alumno, al añadir actividad, que se pueda eliminar si se selecciona una sin querer.
+
+Equals y Hashcode para todas las entidades.
+
+En el crear alumno en la siguiente funcion debe estar el problema:
+<f:ajax  listener="#{alumnosBean.asignarActividadById()}" render="output" />
+AHORA VA. FALLA EN EL MODIFICAR. HAY QUE COPIAR EL DE MODIFICAR ACTIVIDAD Y VERLO TAL CUAL.	

@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 
 import domain.Actividad;
 import domain.Alumno;
+import domain.Monitor;
 import service.ActividadEJB;
 import service.AlumnoEJB;
 
@@ -73,36 +74,13 @@ public class AlumnosBean implements Serializable {
 	private List<Actividad> listaDeActividades;
 	
 	private int actividadID;
-	private List<Actividad> actividadesSeleccionadas;
 	
-	public List<Actividad> getActividadesSeleccionadas() {
-		return actividadesSeleccionadas;
-	}
-
-	public void setActividadesSeleccionadas(List<Actividad> actividadesSeleccionadas) {
-		this.actividadesSeleccionadas = actividadesSeleccionadas;
-	}
-
-	public int getActividadID() {
-		return actividadID;
-	}
-
-	public void setActividadID(int actividadID) {
-		this.actividadID = actividadID;
-	}
+	private List<Actividad> actividadesSeleccionadas = new ArrayList<Actividad>();
+	
 
 	@NotNull(message="Introduzca una fecha")
 	private Date fechaAlta;	
 
-//	private int actividadID;
-//	
-//	public int getActividadID() {
-//		return actividadID;
-//	}
-//
-//	public void setActividadID(int actividadID) {
-//		this.actividadID = actividadID;
-//	}
 
 	@PostConstruct
 	public void init() {
@@ -127,7 +105,6 @@ public class AlumnosBean implements Serializable {
 	public String createAlumno(){
 		Alumno alumnoCreado = alumnoEjb.createAlumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono, 
 													 nombre_autorizador, dni_autorizador, descuento, observaciones_alumno,fechaAlta,listaDeActividades);
-		
 		init();
 		return "alumnos";
 	}
@@ -167,16 +144,18 @@ public class AlumnosBean implements Serializable {
 		allAlumnos = alumnoEjb.getAllAlumnos();
 		return allAlumnos;
 	}	
-	
-	
+		
 	public void asignarActividadById(){
 		Actividad actividadAñadir = actividadEjb.findActividadById(actividadID);
-		if(!this.listaDeActividades.contains(actividadAñadir))
-			listaDeActividades.add(actividadAñadir);
-
-	    }
+		
+		if(!this.actividadesSeleccionadas.contains(actividadAñadir))
+			actividadesSeleccionadas.add(actividadAñadir);
+		
+		this.setListaDeActividades(actividadesSeleccionadas);
+//		if(!this.listaDeActividades.contains(actividadAñadir))
+//			listaDeActividades.add(actividadAñadir);
+	    }	
 	
-
 	public AlumnoEJB getAlumnoEjb() {
 		return alumnoEjb;
 	}
@@ -323,6 +302,22 @@ public class AlumnosBean implements Serializable {
 
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
+	}
+	
+	public List<Actividad> getActividadesSeleccionadas() {
+		return actividadesSeleccionadas;
+	}
+
+	public void setActividadesSeleccionadas(List<Actividad> actividadesSeleccionadas) {
+		this.actividadesSeleccionadas = actividadesSeleccionadas;
+	}
+
+	public int getActividadID() {
+		return actividadID;
+	}
+
+	public void setActividadID(int actividadID) {
+		this.actividadID = actividadID;
 	}
 
 

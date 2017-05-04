@@ -32,18 +32,18 @@
 									<h2>
 										<h:outputText value="#{monitor.nombre}" />
 									</h2>
-									<p>
-										<h:outputText value="#{monitor.dni}" />
-										<br />
-										<h:outputText value="#{monitor.telefono}" />
-										<br />
-										<h:outputText value="#{monitor.activo}" />
-										<br />
-										
-										<h:outputText value="#{monitor.actividadesImpartidas}" />
-										<br />
-										<br />					
-									</p>
+									
+									<h:outputLabel><div class="descriptores">#{msg['addTeacherDni']}:  </div></h:outputLabel><h:outputText value=" #{monitor.dni}" />
+									<br />
+									<h:outputLabel><div class="descriptores">#{msg['addTeacherPhone']}:  </div></h:outputLabel><h:outputText value=" #{monitor.telefono}" />
+									<br />
+									<h:outputLabel><div class="descriptores">#{msg['addTeacherActive']}:  </div></h:outputLabel><h:outputText value=" #{monitor.activo}" />
+									<br />
+									
+									<h:outputLabel><div class="descriptores">#{msg['addTeacherActivityList']}:  </div></h:outputLabel><h:outputText value=" #{monitor.actividadesImpartidas}" />
+									<br />
+									<br />					
+									
 								</h:commandLink>
 							</h:form>
 						</div>	

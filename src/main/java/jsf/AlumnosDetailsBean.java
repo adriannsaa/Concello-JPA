@@ -22,7 +22,6 @@ public class AlumnosDetailsBean implements Serializable {
 	private Alumno alumnoSaved;
 	private Alumno alumnoDelete;
 
-
 	public Alumno getAlumnoDetails() {
 		return alumnoDetails;
 	}

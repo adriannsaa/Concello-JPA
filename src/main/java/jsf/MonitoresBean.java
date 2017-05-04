@@ -28,6 +28,8 @@ public class MonitoresBean implements Serializable {
 
 	@Inject
 	MonitorEJB monitorEjb;
+	@Inject
+	ActividadEJB actividadEjb;
 	
 	@Id
 	@NotNull
@@ -159,7 +161,6 @@ public class MonitoresBean implements Serializable {
 	
 	public List<Monitor> getListMonitores(){
 		this.listaMonitores = monitorEjb.getAllMonitores();	
-		
 		return this.listaMonitores;
 	}
 	

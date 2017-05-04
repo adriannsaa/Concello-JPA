@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -56,10 +57,14 @@ public class Actividad implements Serializable {
 	@Size(min=0, max = 255)
 	private String observaciones_actividad;
 	
-	@ManyToMany(mappedBy="listaDeActividades", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinTable(name = "Asistir", 
+	joinColumns = @JoinColumn(name = "alumno_id", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "actividad_id", referencedColumnName = "id")
+	)
 	private List<Alumno> listaDeAlumnos;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "monitor_id")
 	private Monitor monitor;
 	
@@ -176,6 +181,23 @@ public class Actividad implements Serializable {
 	public final int hashCode() {
 		return id;
 	}
+	
+//	@Override
+//	public int hashCode() {
+//	final int prime = 31;
+//	int result = 1;
+//
+//	result = prime * result + participantes;
+//	result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+//	result = prime * result + ((monitor == null) ? 0 : monitor.hashCode());
+//	result = prime * result + ((horario== null) ? 0 : horario.hashCode());
+//	result = prime * result + ((lugar == null) ? 0 : lugar.hashCode());
+//	result = prime * result + ((material == null) ? 0 : material.hashCode());
+//	result = prime * result + ((observaciones_actividad == null) ? 0 : observaciones_actividad.hashCode());
+//	result = prime * result + ((listaDeAlumnos == null) ? 0 : listaDeAlumnos.hashCode());
+//
+//	return result;
+//	}
 
 	/**
 	 * Override the equals method
@@ -200,6 +222,54 @@ public class Actividad implements Serializable {
 			return this.nombre.equalsIgnoreCase(other.nombre);
 			}
 	}
+//	@Override
+//	public boolean equals(Object obj) {
+//	if (this == obj)
+//	return true;
+//	if (obj == null)
+//	return false;
+//	if (getClass() != obj.getClass())
+//	return false;
+//	Actividad other = (Actividad) obj;
+//	if (nombre == null) {
+//	if (other.nombre != null)
+//	return false;
+//	} else if (!nombre.equals(other.nombre))
+//	return false;
+//	if (monitor == null) {
+//	if (other.monitor != null)
+//	return false;
+//	} else if (!monitor.equals(other.monitor))
+//	return false;
+//	if (horario == null) {
+//	if (other.horario != null)
+//	return false;
+//	} else if (!horario.equals(other.horario))
+//	return false;
+//	if (lugar == null) {
+//	if (other.lugar != null)
+//	return false;
+//	} else if (!lugar.equals(other.lugar))
+//	return false;
+//	if (material == null) {
+//	if (other.material != null)
+//	return false;
+//	} else if (!material.equals(other.material))
+//	return false;
+//	if (observaciones_actividad == null) {
+//	if (other.observaciones_actividad != null)
+//	return false;
+//	} else if (!observaciones_actividad.equals(other.observaciones_actividad))
+//	return false;
+//	if (listaDeAlumnos == null) {
+//	if (other.listaDeAlumnos != null)
+//	return false;
+//	} else if (!listaDeAlumnos.equals(other.listaDeAlumnos))
+//	return false;
+//	if (participantes != other.participantes)
+//	return false;
+//	return true;
+//	}
 
 	/**
 	 * Override the toString method

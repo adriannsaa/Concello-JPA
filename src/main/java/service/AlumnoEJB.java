@@ -53,7 +53,7 @@ public class AlumnoEJB {
 		Alumno alumnoCreado = new Alumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono,
 				nombre_autorizador, dni_autorizador, descuento, observaciones_alumno,fechaAlta,listaDeActividades);
 		
-		em.persist(alumnoCreado);
+		em.persist(em.merge(alumnoCreado));
 		em.flush();
 		logger.log(Level.INFO, "El alumno " + alumnoCreado.getNombre() + " ha sido creado.");
 		

@@ -32,24 +32,25 @@
 									<h2>
 										<h:outputText value="#{actividad.nombre}" />
 									</h2>
-									<p>
-										<h:outputText value="#{actividad.contadorAlumnos}" />
-										<h:outputText value="/" />
-										<h:outputText value="#{actividad.participantes}" />
+									
+									<h:outputLabel><div class="descriptores">#{msg['addActivityParticipants']}:  </div></h:outputLabel>
+									<h:outputText value=" #{actividadesBean.contadorAlumnosActividad(actividad.id)}" />
+									<h:outputText value="/" />
+									<h:outputText value="#{actividad.participantes}" />
+									<br />
+									<h:outputLabel><div class="descriptores">#{msg['addActivityTeacher']}:  </div></h:outputLabel><h:outputText value=" #{actividad.monitor.nombre}" />
+									<br />
+									<h:outputLabel><div class="descriptores">#{msg['addActivityDate']}:  </div></h:outputLabel><h:outputText value=" #{actividad.horario}" />
+									<br />
+									<h:outputLabel><div class="descriptores">#{msg['addActivityPlace']}:  </div></h:outputLabel><h:outputText value=" #{actividad.lugar}" />
+									<br />
+									<ui:repeat value="#{actividadesBean.getAllAlumnosFromActividad(actividad.id)}" var="alumno" varStatus="estado">
+										<h:outputText value="#{alumno.nombre}" />
 										<br />
-										<h:outputText value="#{actividad.monitor.nombre}" />
-										<br />
-										<h:outputText value="#{actividad.horario}" />
-										<br />
-										<h:outputText value="#{actividad.lugar}" />
-										<br />
-										<ui:repeat value="#{actividadesBean.getAllAlumnosFromActividad(actividad.id)}" var="alumno" varStatus="estado">
-											<h:outputText value="#{alumno.nombre}" />
-											<br />
-										</ui:repeat>
-										<br />
-										<br />			
-									</p>
+									</ui:repeat>
+									<br />
+									<br />			
+									
 								</h:commandLink>
 							</h:form>
 						</div>	

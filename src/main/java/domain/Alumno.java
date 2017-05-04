@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -87,7 +88,7 @@ public class Alumno implements Serializable {
 	@NotNull(message="Introduzca una fecha")
 	private Date fechaAlta;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
 	@XmlTransient
 	@JoinTable(name = "Asistir", 
 			joinColumns = @JoinColumn(name = "alumno_id", referencedColumnName = "id"),
@@ -124,7 +125,8 @@ public class Alumno implements Serializable {
 		this.dni_autorizador = dni_autorizador;
 		this.descuento = descuento;
 		this.observaciones_alumno = observaciones_alumno;	
-		this.setListaDeActividades(listaDeActividades);
+		this.listaDeActividades = listaDeActividades;
+		//this.setListaDeActividades(listaDeActividades);
 		this.fechaAlta = new Date();
 	}
 
@@ -269,7 +271,27 @@ public class Alumno implements Serializable {
 	public final int hashCode() {
 		return id;
 	}
-
+	
+//	@Override
+//	public int hashCode() {
+//	final int prime = 31;
+//	int result = 1;
+//
+//	result = prime * result + edad;
+//	result = prime * result + telefono;
+//	result = prime * result + cp;
+//	result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+//	result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+//	result = prime * result + ((email == null) ? 0 : email.hashCode());
+//	result = prime * result + ((localidad == null) ? 0 : localidad.hashCode());
+//	result = prime * result + ((provincia == null) ? 0 : provincia.hashCode());
+//	result = prime * result + ((nombre_autorizador == null) ? 0 : nombre_autorizador.hashCode());
+//	result = prime * result + ((dni_autorizador == null) ? 0 : dni_autorizador.hashCode());
+//	result = prime * result + ((descuento == null) ? 0 : descuento.hashCode());
+//	result = prime * result + ((observaciones_alumno == null) ? 0 : observaciones_alumno.hashCode());
+//	result = prime * result + ((listaDeActividades == null) ? 0 : listaDeActividades.hashCode());
+//	return result;
+//	}
 	/**
 	 * Override the equals method
 	 * 
@@ -292,6 +314,58 @@ public class Alumno implements Serializable {
 			return this.dni.equalsIgnoreCase(other.dni);
 			}
 	}
+//	
+//	@Override
+//	public boolean equals(Object obj) {
+//	if (this == obj)
+//		return true;
+//	if (obj == null)
+//		return false;
+//	if (getClass() != obj.getClass())
+//		return false;
+//	Alumno other = (Alumno) obj;
+//	if (cp != other.cp)
+//		return false;
+//	if (direccion == null) {
+//	if (other.direccion != null)
+//	return false;
+//	} else if (!direccion.equals(other.direccion))
+//	return false;
+//	if (dni == null) {
+//	if (other.dni != null)
+//	return false;
+//	} else if (!dni.equals(other.dni))
+//	return false;
+//	if (email == null) {
+//	if (other.email != null)
+//	return false;
+//	} else if (!email.equals(other.email))
+//	return false;
+//	if (localidad == null) {
+//	if (other.localidad != null)
+//	return false;
+//	} else if (!localidad.equals(other.localidad))
+//	return false;
+//	if (nombre == null) {
+//	if (other.nombre != null)
+//	return false;
+//	} else if (!nombre.equals(other.nombre))
+//	return false;
+//	if (provincia == null) {
+//	if (other.provincia != null)
+//	return false;
+//	} else if (!provincia.equals(other.provincia))
+//	return false;
+//	if (listaDeActividades == null) {
+//	if (other.listaDeActividades != null)
+//	return false;
+//	} else if (!listaDeActividades.equals(other.listaDeActividades))
+//	return false;
+//	if (telefono != other.telefono)
+//	return false;
+//	return true;
+//	}
+
 
 	/**
 	 * Override the toString method

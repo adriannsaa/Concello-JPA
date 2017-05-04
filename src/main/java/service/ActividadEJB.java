@@ -97,14 +97,6 @@ public class ActividadEJB {
 		return listaAlumnosActividad;
 	}
 	
-//	@PermitAll
-//	@Transactional(Transactional.TxType.SUPPORTS)
-//	public Long contadorAlumnosActividad(int id) throws NoResultException {
-//		Long contador = em.createQuery("SELECT count(a.id) FROM Alumno a JOIN a.listaDeActividades l WHERE l.id=:i", Long.class).setParameter("i", id)
-//				.getSingleResult();
-//		
-//		return contador;
-//	}
 	
 	/*
 	 * Modificación de actividades

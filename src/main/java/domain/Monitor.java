@@ -85,7 +85,7 @@ public class Monitor implements Serializable {
 	private String observaciones_monitor;
 
 	@XmlTransient
-	@OneToMany( mappedBy = "monitor", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "monitor", cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<Actividad> actividadesImpartidas;
 
 

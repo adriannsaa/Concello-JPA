@@ -87,16 +87,18 @@
 			            <h:inputText value="#{alumnosDetailsBean.alumnoDetails.fechaAlta}" readonly="true"></h:inputText>
 			            <br />
 			            
-			            <h:outputLabel for="descuento">#{msg['addStudentActivityList']}:</h:outputLabel>
+			            <h:outputLabel for="mostrarList">#{msg['addStudentActivityList']}:</h:outputLabel>
 			            <h:selectOneMenu value="#{alumnosBean.actividadID}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
+				   			<f:selectItem itemValue="#{null}" itemLabel="#{msg['addSelectButton']}"/>
 				   			<f:selectItems value="#{actividadesBean.getAllActividades()}" var="actiList"
-													   itemLabel="#{actiList.nombre}" itemValue="#{actiList.id}" />
-													   					
+													   itemLabel="#{actiList.nombre}" itemValue="#{actiList.id}" />									   					
 							<f:ajax  listener="#{alumnosBean.asignarActividadById()}" render="output" />												   
 				   		</h:selectOneMenu>
 				   		<br />
 				   		<br />
-				   		<h:outputText id="output" value="#{alumnosBean.listaDeActividades}" />
+				   		
+				   		<h:outputLabel for="listActi">#{msg['addStudentActivityList']}:</h:outputLabel>
+				   		<h:outputText id="output" value="#{alumnosDetailsBean.alumnoDetails.listaDeActividades}" />
 						<br />
 						<br />
 			            

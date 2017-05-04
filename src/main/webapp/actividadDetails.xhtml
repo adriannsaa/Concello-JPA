@@ -50,6 +50,7 @@
 			            
 			            <h:outputLabel for="monitorM">*#{msg['addActivityTeacher']}:</h:outputLabel>
        			   		<h:selectOneMenu value="#{actividadesBean.monitorId}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
+				   			<f:selectItem itemValue="#{null}" itemLabel="#{msg['addSelectButton']}"/>
 				   			<f:selectItems value="#{monitoresBean.getListMonitores()}" var="monitorList"
 													   itemLabel="#{monitorList.nombre}" itemValue="#{monitorList.id}" />
 							<f:ajax listener="#{actividadesBean.asignarMonitorById()}"/>						   
