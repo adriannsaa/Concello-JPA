@@ -19,6 +19,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import domain.Actividad;
+import domain.Alumno;
 import domain.Monitor;
 
 
@@ -84,6 +85,26 @@ public class ActividadEJB {
 		actividades.addAll(em.createQuery("Select a FROM Actividad a ORDER BY a.id DESC", Actividad.class).getResultList());
 		return actividades;
 	}
+	
+	@PermitAll
+	@Transactional(Transactional.TxType.SUPPORTS)
+	public List<Alumno> findAlumnosFromActividad(int id) throws NoResultException {
+		List<Alumno> listaAlumnosActividad = new ArrayList<Alumno>();
+		
+		listaAlumnosActividad.addAll(em.createQuery("SELECT a FROM Alumno a JOIN a.listaDeActividades l WHERE l.id=:i", Alumno.class).setParameter("i", id)
+				.getResultList());
+						
+		return listaAlumnosActividad;
+	}
+	
+//	@PermitAll
+//	@Transactional(Transactional.TxType.SUPPORTS)
+//	public Long contadorAlumnosActividad(int id) throws NoResultException {
+//		Long contador = em.createQuery("SELECT count(a.id) FROM Alumno a JOIN a.listaDeActividades l WHERE l.id=:i", Long.class).setParameter("i", id)
+//				.getSingleResult();
+//		
+//		return contador;
+//	}
 	
 	/*
 	 * Modificación de actividades

@@ -63,6 +63,10 @@ public class ActividadesBean implements Serializable {
 	private Monitor monitor;	
 	
 	private int monitorId;
+	
+	private int contadorAlumnos;
+
+
 
 	@PostConstruct
 	public void init() {
@@ -118,8 +122,33 @@ public class ActividadesBean implements Serializable {
 	
 	public void asignarMonitorById(){
 		setMonitor(monitorEjb.findMonitorById(monitorId));
-	       //if (id != 0 )  this.monitor = monitorEjb.findMonitorById(id);
 	    }
+	
+	public void asignarAlumnosById(){
+		setListaDeAlumnos(actividadEjb.findAlumnosFromActividad(id));
+	}
+	
+	public List<Alumno> getAllAlumnosFromActividad(int id){
+		List<Alumno> allAlumnosActividad = new ArrayList<Alumno>();
+		allAlumnosActividad = actividadEjb.findAlumnosFromActividad(id);
+		
+		return allAlumnosActividad;
+	}	
+	
+	public void contadorAlumnos(){
+		int contador=0;
+		for(Alumno a : listaDeAlumnos){
+			contador++;
+		}
+		
+		setContadorAlumnos(contador);
+	}
+	
+//	public void contadorAlumnosActividad(int id){
+//		Long cont= null;
+//		cont = actividadEjb.contadorAlumnosActividad(id);
+//		setContadorAlumnos(cont);
+//	}
 	
 	public ActividadEJB getActividadEjb() {
 		return actividadEjb;
@@ -220,5 +249,13 @@ public class ActividadesBean implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}	
+	
+	public int getContadorAlumnos() {
+		return contadorAlumnos;
+	}
+
+	public void setContadorAlumnos(int contadorAlumnos) {
+		this.contadorAlumnos = contadorAlumnos;
+	}
 
 }

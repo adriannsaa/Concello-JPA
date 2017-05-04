@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.annotation.security.PermitAll;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
@@ -32,6 +33,9 @@ public class AlumnoEJB {
 	@PersistenceContext
 	EntityManager em = factory.createEntityManager();
 
+	@Inject
+	ActividadEJB actividadEjb;
+	
 	@Resource
 	protected SessionContext ctx;
 
@@ -48,10 +52,11 @@ public class AlumnoEJB {
 
 		Alumno alumnoCreado = new Alumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono,
 				nombre_autorizador, dni_autorizador, descuento, observaciones_alumno,fechaAlta,listaDeActividades);
-
+		
 		em.persist(alumnoCreado);
 		em.flush();
 		logger.log(Level.INFO, "El alumno " + alumnoCreado.getNombre() + " ha sido creado.");
+		
 		return alumnoCreado;
 	}
 

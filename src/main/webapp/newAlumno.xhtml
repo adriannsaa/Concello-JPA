@@ -85,13 +85,21 @@
 			            <br />
 			            <br />
 			            
-			            <h:outputLabel for="actividadesDisponibles">#{msg['addStudentActivityList']}:</h:outputLabel>
-						<h:selectManyCheckbox value="#{alumnosBean.listaDeActividades}">
-				   			<f:selectItems value="#{actividadesBean.getAllActividades()}" />							
-				   		</h:selectManyCheckbox>
-				   		<br />
+			            <h:outputLabel for="activiAl">#{msg['addStudentActivityList']}:</h:outputLabel>
+			            <h:selectOneMenu value="#{alumnosBean.actividadID}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
+				   			<f:selectItems value="#{actividadesBean.getAllActividades()}" var="actiList"
+													   itemLabel="#{actiList.nombre}" itemValue="#{actiList.id}" />
+													   					
+							<f:ajax  listener="#{alumnosBean.asignarActividadById()}" render="output" />												   
+				   		</h:selectOneMenu>			   		
 						<br />
-			            
+						<br />
+						
+						<h:outputLabel for="listActis">#{msg['addStudentActivityList']}:</h:outputLabel>
+						<h:outputText id="output" value="#{alumnosBean.listaDeActividades}" />			   		
+						<br />
+						<br />
+   
 			            <h:outputLabel for="observaciones">#{msg['addStudentObser']}:</h:outputLabel>
 			            <h:inputTextarea cols="20" rows="5" value="#{alumnosBean.observaciones_alumno}" required="false" requiredMessage="#{msg['validatorStudentObvs']}"></h:inputTextarea>
 			            <br />

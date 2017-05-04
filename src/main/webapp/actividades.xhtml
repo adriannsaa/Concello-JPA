@@ -33,6 +33,8 @@
 										<h:outputText value="#{actividad.nombre}" />
 									</h2>
 									<p>
+										<h:outputText value="#{actividad.contadorAlumnos}" />
+										<h:outputText value="/" />
 										<h:outputText value="#{actividad.participantes}" />
 										<br />
 										<h:outputText value="#{actividad.monitor.nombre}" />
@@ -40,6 +42,11 @@
 										<h:outputText value="#{actividad.horario}" />
 										<br />
 										<h:outputText value="#{actividad.lugar}" />
+										<br />
+										<ui:repeat value="#{actividadesBean.getAllAlumnosFromActividad(actividad.id)}" var="alumno" varStatus="estado">
+											<h:outputText value="#{alumno.nombre}" />
+											<br />
+										</ui:repeat>
 										<br />
 										<br />			
 									</p>

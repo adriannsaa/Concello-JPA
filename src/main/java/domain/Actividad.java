@@ -86,6 +86,10 @@ public class Actividad implements Serializable {
 		this.observaciones_actividad = observaciones_actividad;
 		this.listaDeAlumnos = new ArrayList<Alumno>();
 	}
+	
+	public void addAlumno(Alumno alumno){
+		this.listaDeAlumnos.add(alumno);
+	}
 		
 	public int getId() {
 		return id;

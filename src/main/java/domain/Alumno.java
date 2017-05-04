@@ -93,7 +93,7 @@ public class Alumno implements Serializable {
 			joinColumns = @JoinColumn(name = "alumno_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "actividad_id", referencedColumnName = "id")
 			)
-	private List<Actividad> listaDeActividades;
+	private List<Actividad> listaDeActividades = new ArrayList<Actividad>();
 
 
 	/**
@@ -124,7 +124,7 @@ public class Alumno implements Serializable {
 		this.dni_autorizador = dni_autorizador;
 		this.descuento = descuento;
 		this.observaciones_alumno = observaciones_alumno;	
-		this.listaDeActividades = new ArrayList<Actividad>();
+		this.setListaDeActividades(listaDeActividades);
 		this.fechaAlta = new Date();
 	}
 

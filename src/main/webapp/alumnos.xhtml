@@ -31,15 +31,15 @@
 								<h:commandLink action="#{alumnosDetailsBean.getDetailsAlumno(alumno.id)}">
 									<h2>
 										<h:outputText value="#{alumno.nombre}" />
-									</h2>
-									<p>
-										<h:outputText value="#{alumno.dni}" />
+									</h2>									
+									<p>									
+										<h:outputLabel><div class="descriptores">#{msg['addStudentDni']}:  </div></h:outputLabel><h:outputText value=" #{alumno.dni}" />								
 										<br />
-										<h:outputText value="#{alumno.email}" />
+										<h:outputLabel><div class="descriptores">#{msg['addStudentEmail']}:  </div></h:outputLabel><h:outputText value=" #{alumno.email}" />
 										<br />
-										<h:outputText value="#{alumno.telefono}" />
+										<h:outputLabel><div class="descriptores">#{msg['addStudentPhone']}:  </div></h:outputLabel><h:outputText value=" #{alumno.telefono}" />
 										<br />
-										<h:outputText value="#{alumno.listaDeActividades}" />
+										<h:outputLabel><div class="descriptores">#{msg['addStudentActivityList']}:  </div></h:outputLabel><h:outputText value=" #{alumno.listaDeActividades}" />
 										<br />
 										<br />				
 									</p>
