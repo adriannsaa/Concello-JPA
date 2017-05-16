@@ -53,10 +53,19 @@ public class AlumnoEJB {
 		Alumno alumnoCreado = new Alumno(nombre, dni, edad, email, direccion, cp, localidad, provincia, telefono,
 				nombre_autorizador, dni_autorizador, descuento, observaciones_alumno,fechaAlta,listaDeActividades);
 		
+		
+//		List<Alumno> listaAlumnos = new ArrayList<Alumno>();
+//		for(Actividad acti : listaDeActividades){
+//			Actividad actividadModificaAlumno = actividadEjb.findActividadById(acti.getId());
+//			
+//			listaAlumnos.add(alumnoCreado);
+//			actividadModificaAlumno.setListaDeAlumnos(listaAlumnos);
+//		}
+		
 		em.persist(em.merge(alumnoCreado));
 		em.flush();
 		logger.log(Level.INFO, "El alumno " + alumnoCreado.getNombre() + " ha sido creado.");
-		
+				
 		return alumnoCreado;
 	}
 

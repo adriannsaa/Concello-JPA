@@ -88,11 +88,11 @@
 			            <br />
 			            
 			            <h:outputLabel for="mostrarList">#{msg['addStudentActivityList']}:</h:outputLabel>
-			            <h:selectOneMenu value="#{alumnosBean.actividadID}" required="true" requiredMessage="#{msg['validatorTeacherAct']}">
+			            <h:selectOneMenu value="#{alumnosDetailsBean.actividadID}" required="true" requiredMessage="#{msg['validatorActivities']}">
 				   			<f:selectItem itemValue="#{null}" itemLabel="#{msg['addSelectButton']}"/>
 				   			<f:selectItems value="#{actividadesBean.getAllActividades()}" var="actiList"
 													   itemLabel="#{actiList.nombre}" itemValue="#{actiList.id}" />									   					
-							<f:ajax  listener="#{alumnosBean.asignarActividadById()}" render="output" />												   
+							<f:ajax  listener="#{alumnosDetailsBean.asignarActividadById()}" render="output" />												   
 				   		</h:selectOneMenu>
 				   		<br />
 				   		<br />

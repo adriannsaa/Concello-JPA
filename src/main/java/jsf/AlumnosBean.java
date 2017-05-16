@@ -146,15 +146,13 @@ public class AlumnosBean implements Serializable {
 	}	
 		
 	public void asignarActividadById(){
-		Actividad actividadAñadir = actividadEjb.findActividadById(actividadID);
+		Actividad actividadAdd = actividadEjb.findActividadById(actividadID);
 		
-		if(!this.actividadesSeleccionadas.contains(actividadAñadir))
-			actividadesSeleccionadas.add(actividadAñadir);
+		if(!this.actividadesSeleccionadas.contains(actividadAdd))
+			actividadesSeleccionadas.add(actividadAdd);
 		
 		this.setListaDeActividades(actividadesSeleccionadas);
-//		if(!this.listaDeActividades.contains(actividadAñadir))
-//			listaDeActividades.add(actividadAñadir);
-	    }	
+	}
 	
 	public AlumnoEJB getAlumnoEjb() {
 		return alumnoEjb;

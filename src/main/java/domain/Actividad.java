@@ -58,7 +58,7 @@ public class Actividad implements Serializable {
 	private String observaciones_actividad;
 	
 	@ManyToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinTable(name = "Asistir", 
+	@JoinTable(name = "asistir", 
 	joinColumns = @JoinColumn(name = "alumno_id", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "actividad_id", referencedColumnName = "id")
 	)

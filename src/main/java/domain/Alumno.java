@@ -50,7 +50,7 @@ public class Alumno implements Serializable {
 	private String email;
 	
 	@Column(length = 100,nullable = false)
-	@NotNull(message="Introduzca una durección")
+	@NotNull(message="Introduzca una dirección")
 	@Size(min=5, max = 100)
 	private String direccion;
 	
@@ -90,7 +90,7 @@ public class Alumno implements Serializable {
 
 	@ManyToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
 	@XmlTransient
-	@JoinTable(name = "Asistir", 
+	@JoinTable(name = "asistir", 
 			joinColumns = @JoinColumn(name = "alumno_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "actividad_id", referencedColumnName = "id")
 			)

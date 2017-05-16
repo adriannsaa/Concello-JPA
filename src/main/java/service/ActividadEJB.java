@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.annotation.security.PermitAll;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
@@ -31,6 +32,9 @@ public class ActividadEJB {
 	
 	@PersistenceContext
 	EntityManager em = factory.createEntityManager();
+	
+	@Inject
+	MonitorEJB monitorEjb;
 	
 	@Resource
 	protected SessionContext ctx;
@@ -119,7 +123,7 @@ public class ActividadEJB {
 		toUpdate.setMaterial(actividad.getMaterial());
 		toUpdate.setObservaciones_actividad(actividad.getObservaciones_actividad());
 		toUpdate.setListaDeAlumnos(actividad.getListaDeAlumnos());
-
+		
 		em.merge(toUpdate);
 		em.flush();
 		

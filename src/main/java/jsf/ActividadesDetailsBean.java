@@ -17,6 +17,7 @@ import domain.Actividad;
 import domain.Alumno;
 import domain.Monitor;
 import service.ActividadEJB;
+import service.MonitorEJB;
 
 @Named(value = "actividadesDetailsBean")
 @SessionScoped
@@ -24,12 +25,23 @@ public class ActividadesDetailsBean implements Serializable {
 	
 	@Inject
 	ActividadEJB actividadEjb;
+	@Inject
+	MonitorEJB monitorEjb;
 
 	private static final long serialVersionUID = 1L;
 
 	private Actividad actividadDetails;
 	private Actividad actividadSaved;
 	private Actividad actividadDelete;
+	private int monitorId;
+
+	public int getMonitorId() {
+		return monitorId;
+	}
+
+	public void setMonitorId(int monitorId) {
+		this.monitorId = monitorId;
+	}
 
 	public ActividadEJB getActividadEjb() {
 		return actividadEjb;
@@ -63,6 +75,7 @@ public class ActividadesDetailsBean implements Serializable {
 		this.actividadDelete = actividadDelete;
 	}
 
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -88,6 +101,10 @@ public class ActividadesDetailsBean implements Serializable {
 		
 		actividadEjb.updateActividad(actividadSaved);
 		return "actividades";
+	}
+	
+	public void asignarMonitorById(){
+		actividadDetails.setMonitor(monitorEjb.findMonitorById(monitorId));
 	}
 	
 	public String deleteActividad(int id){
